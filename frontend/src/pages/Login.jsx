@@ -5,7 +5,7 @@ const Login = () => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center text-white">
       <h1 className="my-6 text-2xl font-bold">Welcome Back!</h1>
-      <AuthForm register={false} />
+      <AuthForm isRegister={false} />
       <p className="text-gray-200">
         Don&apos;t have an account?{" "}
         <Link

@@ -38,4 +38,7 @@ body {
   .error {
     @apply text-sm -mt-1 text-red-600 px-2  font-semibold;
   }
+  .input-error {
+    @apply border-2 focus:border-2 border-red-600 ring-1 ring-red-500 focus:ring-red-500;
+  }
 }
