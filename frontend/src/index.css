@@ -26,4 +26,16 @@ body {
   .main-btn {
     @apply text-lg px-4 py-[6px] bg-main rounded-lg font-semibold border border-main hover:bg-transparent hover:text-main transition;
   }
+  .field-container {
+    @apply flex gap-2 flex-col;
+  }
+  .label {
+    @apply text-lg font-semibold;
+  }
+  .form-input {
+    @apply focus:outline-none text-white text-[16px] focus:border bg-[#5C4755]/40 focus:border-main p-2 rounded-md;
+  }
+  .error {
+    @apply text-sm -mt-1 text-red-600 px-2  font-semibold;
+  }
 }
