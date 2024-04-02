@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { Dashboard, Home, Login, PageError, Projects, Register } from "./pages";
-import { Header, Footer } from "./components";
+import { Header } from "./components";
 import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <>
       <Header />
-      <div>
+      <div className="bg min-h-screen">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sign-up" element={<Register />} />
@@ -17,7 +17,6 @@ function App() {
         </Routes>
         <Toaster />
       </div>
-      <Footer />
     </>
   );
 }

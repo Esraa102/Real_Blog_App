@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background: linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("/public/assets/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@layer components {
+  .bg-glass {
+    @apply bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 
+            hover:bg-gray-600/10  text-white;
+  }
+  .input {
+    @apply bg-transparent focus:outline-none text-white text-[16px];
+  }
+  .main-btn {
+    @apply text-lg px-4 py-[6px] bg-main rounded-lg font-semibold border border-main hover:bg-transparent hover:text-main transition;
+  }
+}
