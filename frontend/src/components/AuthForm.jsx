@@ -11,7 +11,7 @@ const AuthForm = ({ isRegister }) => {
     formState: { errors },
   } = useForm();
   const emailRegex =
-    /^[a-zA-Z0-9_!#$%&‘*=+/?^{|}~]+([.-]?[a-zA-Z0-9_!#$%&*=+/?^{|}~]+)*@\w+([.-]?\w+)*(\.\w{2,50})+$/;
+    /^[a-zA-Z0-9_!#$%&*=+/?^{|}~]+([.-]?[a-zA-Z0-9_!#$%&*=+/?^{|}~]+)*@\w+([.-]?\w+)*(\.\w{2,50})+$/;
   const [isPassword, setIsPassword] = useState(true);
   const onSubmit = (data) => {
     console.log(data);
