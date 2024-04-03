@@ -4,7 +4,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 
-const AuthForm = ({ isRegister }) => {
+const AuthForm = ({ isRegister, sendData, loading }) => {
   const {
     register,
     handleSubmit,
@@ -13,9 +13,22 @@ const AuthForm = ({ isRegister }) => {
   const emailRegex =
     /^[a-zA-Z0-9_!#$%&*=+/?^{|}~]+([.-]?[a-zA-Z0-9_!#$%&*=+/?^{|}~]+)*@\w+([.-]?\w+)*(\.\w{2,50})+$/;
   const [isPassword, setIsPassword] = useState(true);
+
   const onSubmit = (data) => {
-    console.log(data);
+    if (isRegister) {
+      sendData({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      });
+    } else {
+      sendData({
+        email: data.email,
+        password: data.password,
+      });
+    }
   };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -103,8 +116,15 @@ const AuthForm = ({ isRegister }) => {
         )}
       </div>
       <div className="flex items-center gap-4 flex-col md:flex-row justify-between">
-        <button type="submit" className="main-btn flex-1">
-          {isRegister ? "Create Account" : "Sign In"}
+        <button
+          type="submit"
+          disabled={loading}
+          className={`main-btn flex-1 ${loading && "load-btn"}`}
+        >
+          {isRegister && !loading && "Create Account"}
+          {isRegister && loading && "Creating account...."}
+          {!isRegister && !loading && "Sign In"}
+          {!isRegister && loading && "Signing In..."}
         </button>
         <span className="text-center">OR</span>
         <OAuthGoogle />
