@@ -41,4 +41,7 @@ body {
   .input-error {
     @apply border-2 focus:border-2 border-red-600 ring-1 ring-red-500 focus:ring-red-500;
   }
+  .load-btn {
+    @apply cursor-not-allowed bg-main/50 border-main/50 hover:bg-main/50 hover:text-white;
+  }
 }
