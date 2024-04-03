@@ -46,7 +46,8 @@ const OAuthGoogle = () => {
       onClick={googleAuthHandler}
       className={`google-btn ${isLoading && "google-btn-load"}`}
     >
-      <FaGoogle size={25} /> <span>Continue With Google</span>
+      <FaGoogle size={25} />
+      <span>{isLoading ? "Wait a Second..." : "Continue With Google"}</span>
     </button>
   );
 };
