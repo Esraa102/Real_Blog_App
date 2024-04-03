@@ -21,7 +21,19 @@ export const authApi = createApi({
       }),
       invalidatesTags: ["Users"],
     }),
+    googleAuth: builder.mutation({
+      query: (userInfo) => ({
+        url: "api/auth/google",
+        method: "POST",
+        body: userInfo,
+      }),
+      invalidatesTags: ["Users"],
+    }),
   }),
 });
 
-export const { useRegisterUserMutation, useLoginUserMutation } = authApi;
+export const {
+  useRegisterUserMutation,
+  useLoginUserMutation,
+  useGoogleAuthMutation,
+} = authApi;

@@ -44,6 +44,12 @@ body {
   .load-btn {
     @apply cursor-not-allowed bg-main/50 border-main/50 hover:bg-main/50 hover:text-white;
   }
+  .google-btn {
+    @apply main-btn border-blue-700 flex items-center gap-1 justify-center hover:border-blue-900 hover:text-white hover:bg-blue-900 bg-blue-700 flex-1;
+  }
+  .google-btn-load {
+    @apply opacity-30 cursor-not-allowed;
+  }
 }
 
 ::-webkit-scrollbar {

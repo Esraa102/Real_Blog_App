@@ -13,9 +13,13 @@ const userSlice = createSlice({
     loginUserSuccess: (state, action) => {
       state.currentUser = action.payload;
     },
+    googleAuthSuccess: (state, action) => {
+      state.currentUser = action.payload;
+    },
   },
 });
 
-export const { registerUserSuccess, loginUserSuccess } = userSlice.actions;
+export const { registerUserSuccess, loginUserSuccess, googleAuthSuccess } =
+  userSlice.actions;
 
 export default userSlice.reducer;
