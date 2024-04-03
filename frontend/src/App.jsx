@@ -1,8 +1,10 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Dashboard, Home, Login, PageError, Projects, Register } from "./pages";
 import { Footer, Header } from "./components";
 import { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
 function App() {
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <>
       <Header />
@@ -11,8 +13,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/sign-up" element={<Register />} />
           <Route path="/sign-in" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/projects" element={<Projects />} />
+          <Route
+            path="/dashboard"
+            element={currentUser ? <Dashboard /> : <Navigate to="/sign-in" />}
+          />
+          <Route
+            path="/projects"
+            element={currentUser ? <Projects /> : <Navigate to={"/sign-in"} />}
+          />
           <Route path="*" element={<PageError />} />
         </Routes>
         <Toaster />

@@ -43,13 +43,13 @@ const Header = () => {
           {currentUser && (
             <Link to={`/profile/${currentUser._id}`}>
               <img
-                src="/assets/bg.jpg"
+                src={currentUser.imgProfile}
                 className="w-14 h-14 rounded-full object-cover"
               />
             </Link>
           )}
         </div>
-        <div className="block lg:hidden">
+        <div className="block lg:hidden z-10">
           <button
             type="button"
             className="hover:text-main transition"
@@ -62,8 +62,8 @@ const Header = () => {
             )}
           </button>
           {!closedNav && (
-            <div className="fixed top-[85px] bg-gray-600/10 right-2 bg-glass p-4 rounded-md z-10 w-[45%]">
-              <ul className="flex flex-col gap-4">
+            <div className="fixed top-[85px] bg-glass backdrop-blur-md right-2  p-4 rounded-md z-10 w-[45%]">
+              <ul className="flex flex-col gap-4 mb-4">
                 {navLinks.map((link) => (
                   <li key={link.name} onClick={() => setClosedNav(true)}>
                     <NavLink
@@ -82,7 +82,7 @@ const Header = () => {
               {currentUser && (
                 <Link to={`/profile/${currentUser._id}`}>
                   <img
-                    src="/assets/bg.jpg"
+                    src={currentUser.imgProfile}
                     className="w-14 h-14 my-4 rounded-full object-cover"
                   />
                 </Link>
