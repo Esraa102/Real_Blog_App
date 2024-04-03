@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Dashboard, Home, Login, PageError, Projects, Register } from "./pages";
-import { Header } from "./components";
+import { Footer, Header } from "./components";
 import { Toaster } from "react-hot-toast";
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
         </Routes>
         <Toaster />
       </div>
+      <Footer />
     </>
   );
 }
