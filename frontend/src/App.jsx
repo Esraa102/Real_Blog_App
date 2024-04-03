@@ -14,7 +14,7 @@ function App() {
           <Route path="/sign-up" element={<Register />} />
           <Route path="/sign-in" element={<Login />} />
           <Route
-            path="/dashboard"
+            path="/dashboard?tab=profile"
             element={currentUser ? <Dashboard /> : <Navigate to="/sign-in" />}
           />
           <Route
