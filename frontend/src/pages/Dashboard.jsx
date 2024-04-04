@@ -13,7 +13,7 @@ const Dashboard = () => {
     }
   }, [location]);
   return (
-    <section className="container mx-auto text-white p-4 pt-[100px] lg:px-0">
+    <section className="container mx-auto text-white p-4 pt-[110px] lg:px-0">
       <div className="flex gap-6">
         {/* Sidebar */}
         <Sidebar tab={tab} />

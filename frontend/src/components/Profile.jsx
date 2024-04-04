@@ -1,5 +1,12 @@
+import { UpdateProfileForm, UploadImgProfile } from ".";
+
 const Profile = () => {
-  return <div>Profile</div>;
+  return (
+    <div>
+      <UploadImgProfile />
+      <UpdateProfileForm />
+    </div>
+  );
 };
 
 export default Profile;

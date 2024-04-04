@@ -8,19 +8,19 @@ const Sidebar = ({ tab }) => {
         <li>
           <Link
             to={"/dashboard?tab=profile"}
-            className={`sidebar-link ${
+            className={`sidebar-link mb-0 ${
               tab === "profile" && "text-main bg-[#261C28]"
             }`}
           >
             <div className="flex items-center gap-2">
               <HiUser size={26} />
-              <sapn>Profile</sapn>
+              <sapn className="hidden md:inline">Profile</sapn>
             </div>
             <span className=" bg-slate-900 px-3 py-1 rounded-md">User</span>
           </Link>
         </li>
       </ul>
-      <LogOut full />
+      <LogOut />
     </div>
   );
 };

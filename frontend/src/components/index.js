@@ -7,7 +7,9 @@ import AuthForm from "./AuthForm";
 import OAuthGoogle from "./OAuthGoogle";
 import Sidebar from "./Sidebar";
 import Profile from "./Profile";
-
+import UploadImgProfile from "./UploadImgProfile";
+import UpdateProfileForm from "./UpdateProfileForm";
+import DeleteAccount from "./DeleteAccount.jsx";
 export {
   Header,
   Footer,
@@ -18,4 +20,7 @@ export {
   OAuthGoogle,
   Sidebar,
   Profile,
+  UploadImgProfile,
+  UpdateProfileForm,
+  DeleteAccount,
 };
