@@ -63,7 +63,7 @@ const Footer = () => {
         </div>
         <div>
           <p className="flex items-center gap-1 justify-center border-t border-gray-400 mt-12 pt-4">
-            <sapn>2024 &copy;</sapn>
+            <span>2024 &copy;</span>
             <Link to={"/"} className="text-xl font-bold uppercase text-main">
               blog
             </Link>

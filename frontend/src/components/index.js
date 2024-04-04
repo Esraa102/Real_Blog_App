@@ -5,4 +5,17 @@ import Search from "./Search";
 import LogOut from "./LogOut";
 import AuthForm from "./AuthForm";
 import OAuthGoogle from "./OAuthGoogle";
-export { Header, Footer, Loading, Search, LogOut, AuthForm, OAuthGoogle };
+import Sidebar from "./Sidebar";
+import Profile from "./Profile";
+
+export {
+  Header,
+  Footer,
+  Loading,
+  Search,
+  LogOut,
+  AuthForm,
+  OAuthGoogle,
+  Sidebar,
+  Profile,
+};
