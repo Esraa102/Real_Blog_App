@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { LogOut, DeleteAccount } from ".";
 
+
 const UpdateProfileForm = () => {
   const { currentUser } = useSelector((state) => state.user);
   const {

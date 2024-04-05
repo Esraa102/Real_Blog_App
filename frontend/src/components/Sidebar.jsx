@@ -14,7 +14,7 @@ const Sidebar = ({ tab }) => {
           >
             <div className="flex items-center gap-2">
               <HiUser size={26} />
-              <sapn className="hidden md:inline">Profile</sapn>
+              <span className="hidden md:inline">Profile</span>
             </div>
             <span className=" bg-slate-900 px-3 py-1 rounded-md">User</span>
           </Link>

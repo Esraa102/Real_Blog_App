@@ -78,3 +78,11 @@ body {
   background-color: #dc2241;
   border-radius: 10px;
 }
+
+path.CircularProgressbar-path {
+  stroke: #dc2241 !important;
+}
+
+path.CircularProgressbar-trail {
+  stroke: #261c29 !important;
+}
