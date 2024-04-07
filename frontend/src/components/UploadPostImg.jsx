@@ -11,7 +11,9 @@ const UploadPostImg = ({ imgUrl, setImgUrl }) => {
     }
   };
   useEffect(() => {
-    uploadImg(imgFile, setImgUrl, setUploadProgress);
+    if (imgFile) {
+      uploadImg(imgFile, setImgUrl, setUploadProgress);
+    }
   }, [imgFile]);
   return (
     <div>

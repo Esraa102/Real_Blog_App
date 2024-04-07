@@ -1,6 +1,9 @@
-import { categories } from "../constants";
+import { useState } from "react";
+import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill";
 import { useForm } from "react-hook-form";
 import { UploadPostImg } from ".";
+import { categories } from "../constants";
 
 const PostForm = ({ imgUrl, setImgUrl }) => {
   const {
@@ -8,9 +11,10 @@ const PostForm = ({ imgUrl, setImgUrl }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [content, setContent] = useState("");
   const onSubmit = (data) => {
     console.log(data);
-    console.log(imgUrl);
+
   };
   return (
     <form
@@ -69,34 +73,16 @@ const PostForm = ({ imgUrl, setImgUrl }) => {
         <label htmlFor="desc" className="label text-lg md:text-xl">
           Post Description
         </label>
-
-        <textarea
+        <ReactQuill
           id="desc"
-          className={`h-[200px] w-full form-input resize-none ${
-            errors.description && "input-error"
-          }`}
-          placeholder="Write what your post talking about"
-          {...register("description", {
-            required: true,
-            minLength: 2,
-            maxLength: 1000,
-          })}
-        ></textarea>
-        {errors.description?.type === "required" && (
-          <p className="error">Description is required</p>
-        )}
-        {errors.description?.type === "minLength" && (
-          <p className="error">Description Should be at least 2 characters</p>
-        )}
-        {errors.description?.type === "maxLength" && (
-          <p className="error">
-            Descrption can&apos;t be more than 1000 characters
-          </p>
-        )}
+          value={content}
+          onChange={setContent}
+          placeholder="Write Something..."
+        />
       </div>
       <div className="flex flex-wrap gap-4 items-center">
         <button type="submit" className="main-btn">
-          Create Post
+          Publish
         </button>
         <button
           type="button"
