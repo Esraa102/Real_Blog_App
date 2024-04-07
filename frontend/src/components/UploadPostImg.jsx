@@ -1,14 +1,18 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import { FaImage } from "react-icons/fa";
-const UploadPostImg = () => {
-  const [, setImg] = useState(null);
-  const [imgUrl, setImgUrl] = useState(null);
+import { uploadImg } from "../utils/uploadImgFunc";
+const UploadPostImg = ({ imgUrl, setImgUrl }) => {
+  const [imgFile, setImgFile] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
   const handleChange = (e) => {
     if (e.target.files[0]) {
-      setImg(e.target.files[0]);
-      setImgUrl(URL.createObjectURL(e.target.files[0]));
+      setImgFile(e.target.files[0]);
     }
   };
+  useEffect(() => {
+    uploadImg(imgFile, setImgUrl, setUploadProgress);
+  }, [imgFile]);
   return (
     <div>
       <p className="label text-lg md:text-xl mb-3">Choose Post Image</p>
@@ -19,6 +23,11 @@ const UploadPostImg = () => {
             alt="post-img"
             className="w-full h-[350px] object-cover rounded-xl"
           />
+        )}
+        {uploadProgress > 0 && uploadProgress < 100 && (
+          <p className="text-sm text-center -mt-3 text-yellow-500 font-semibold">
+            Uploading {uploadProgress}%
+          </p>
         )}
         <label
           htmlFor="postImg"

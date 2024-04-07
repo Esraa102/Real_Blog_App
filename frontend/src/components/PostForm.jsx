@@ -2,7 +2,7 @@ import { categories } from "../constants";
 import { useForm } from "react-hook-form";
 import { UploadPostImg } from ".";
 
-const PostForm = () => {
+const PostForm = ({ imgUrl, setImgUrl }) => {
   const {
     register,
     handleSubmit,
@@ -10,6 +10,7 @@ const PostForm = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    console.log(imgUrl);
   };
   return (
     <form
@@ -63,7 +64,7 @@ const PostForm = () => {
           ))}
         </select>
       </div>
-      <UploadPostImg />
+      <UploadPostImg imgUrl={imgUrl} setImgUrl={setImgUrl} />
       <div className="field-container">
         <label htmlFor="desc" className="label text-lg md:text-xl">
           Post Description
