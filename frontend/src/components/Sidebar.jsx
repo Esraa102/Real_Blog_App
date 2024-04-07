@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { HiUser } from "react-icons/hi";
 import { LogOut } from ".";
+import { useSelector } from "react-redux";
 const Sidebar = ({ tab }) => {
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <div className="dashboard-sidebar">
       <ul className="flex flex-row gap-4 justify-between md:flex-col md:justify-start">
@@ -16,7 +18,9 @@ const Sidebar = ({ tab }) => {
               <HiUser size={26} />
               <span className="hidden md:inline">Profile</span>
             </div>
-            <span className=" bg-slate-900 px-3 py-1 rounded-md">User</span>
+            <span className=" bg-slate-900 px-3 py-1 rounded-md">
+              {currentUser.isAdmin ? "Admin" : "User"}
+            </span>
           </Link>
         </li>
       </ul>

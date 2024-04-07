@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema(
       default:
         "https://c4.wallpaperflare.com/wallpaper/184/515/626/digital-digital-art-artwork-illustration-drawing-hd-wallpaper-preview.jpg",
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

@@ -25,6 +25,7 @@ const registerUser = async (req, res, next) => {
             _id: newUser._id,
             email: newUser.email,
             password,
+            isAdmin: newUser.isAdmin,
           },
           process.env.ACCESS_TOKEN_SECRET
         );
@@ -57,6 +58,7 @@ const logInUser = async (req, res, next) => {
             _id: user._id,
             email: user.email,
             password,
+            isAdmin: user.isAdmin,
           },
           process.env.ACCESS_TOKEN_SECRET
         );
@@ -93,6 +95,7 @@ const googleAuth = async (req, res, next) => {
           _id: user._id,
           email: user.email,
           password: hashedPassword,
+          isAdmin: user.isAdmin,
         },
         process.env.ACCESS_TOKEN_SECRET
       );
@@ -121,6 +124,7 @@ const googleAuth = async (req, res, next) => {
             _id: newUser._id,
             email: newUser.email,
             password: hashedPassword,
+            isAdmin: newUser.isAdmin,
           },
           process.env.ACCESS_TOKEN_SECRET,
           {
