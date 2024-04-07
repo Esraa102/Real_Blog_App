@@ -142,4 +142,8 @@ const googleAuth = async (req, res, next) => {
     return next(customError(res.status(500), error.message));
   }
 };
-export { registerUser, logInUser, googleAuth };
+
+const logOutUser = async (req, res) => {
+  res.clearCookie("access_token").status(200).json("Logged Out Successfully");
+};
+export { registerUser, logInUser, googleAuth, logOutUser };
