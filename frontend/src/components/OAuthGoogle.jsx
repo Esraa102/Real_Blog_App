@@ -6,7 +6,7 @@ import { useGoogleAuthMutation } from "../features/auth/api/authApiSlice";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { googleAuthSuccess } from "../features/auth/authSlice";
+import { googleAuthSuccess } from "../features/auth/userSlice";
 import { useNavigate } from "react-router-dom";
 const OAuthGoogle = () => {
   const auth = getAuth(app);

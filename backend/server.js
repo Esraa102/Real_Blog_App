@@ -7,6 +7,7 @@ import { connectToDB } from "./config/connectDB.js";
 import { authRouter } from "./routes/auth.route.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import { userRouter } from "./routes/user.route.js";
+import { postRouter } from "./routes/post.route.js";
 const app = express();
 connectToDB();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
+app.use("/api/posts", postRouter);
 app.use(errorHandler);
 app.listen(port, () => {
   console.log("Server Running On", port);

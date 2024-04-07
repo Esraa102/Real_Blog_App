@@ -4,7 +4,7 @@ import { AuthForm } from "../components";
 import { useLoginUserMutation } from "../features/auth/api/authApiSlice";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { loginUserSuccess } from "../features/auth/authSlice";
+import { loginUserSuccess } from "../features/auth/userSlice";
 import toast from "react-hot-toast";
 const Login = () => {
   const [loginUser, { isSuccess, error, isLoading, data }] =

@@ -84,7 +84,10 @@ const Header = () => {
             ))}
           </ul>
           {currentUser && (
-            <Link to={"/dashboard?tab=profile"}>
+            <Link
+              to={"/dashboard?tab=profile"}
+              onClick={() => setClosedNav(true)}
+            >
               <img
                 src={currentUser.imgProfile}
                 className="w-14 h-14 my-4 rounded-full object-cover"

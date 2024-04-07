@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { deleteAccountSuccess } from "../features/auth/authSlice";
+import { deleteAccountSuccess } from "../features/auth/userSlice";
 import { useDeleteUserAccountMutation } from "../features/user/api/userApiSlice";
 import { useEffect } from "react";
 

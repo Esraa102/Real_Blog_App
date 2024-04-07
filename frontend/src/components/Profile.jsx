@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UpdateProfileForm, UploadImgProfile } from ".";
 import { useUpdateUserProfileMutation } from "../features/user/api/userApiSlice";
-import { updateProfileSuccess } from "../features/auth/authSlice";
+import { updateProfileSuccess } from "../features/auth/userSlice";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 const Profile = () => {

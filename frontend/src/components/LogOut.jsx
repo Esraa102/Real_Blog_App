@@ -3,7 +3,7 @@ import { useLogOutUserMutation } from "../features/auth/api/authApiSlice";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logOutUserSuccess } from "../features/auth/authSlice";
+import { logOutUserSuccess } from "../features/auth/userSlice";
 import { useEffect } from "react";
 const LogOut = () => {
   const [logOutUser, { data, isLoading, error, isSuccess }] =

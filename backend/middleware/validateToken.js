@@ -18,7 +18,6 @@ export const validateToken = (req, res, next) => {
       return next(customError(res.status(400), "Invalid Token"));
     }
     req.user = decoded;
-    console.log(req.user);
     next();
   });
 };

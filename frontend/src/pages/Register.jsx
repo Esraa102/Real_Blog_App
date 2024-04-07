@@ -5,7 +5,7 @@ import { useRegisterUserMutation } from "../features/auth/api/authApiSlice";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { registerUserSuccess } from "../features/auth/authSlice";
+import { registerUserSuccess } from "../features/auth/userSlice";
 const Register = () => {
   const [registerUser, { isLoading, error, isSuccess, data }] =
     useRegisterUserMutation();
