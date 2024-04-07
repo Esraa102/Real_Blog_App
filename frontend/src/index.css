@@ -68,18 +68,16 @@ body {
   .secondary-btn {
     @apply text-[17px] text-main px-3 py-2 w-fit bg-slate-900 font-semibold  mx-auto rounded-md hover:bg-slate-950 transition;
   }
-  div.quill {
-    @apply h-[300px] border border-[#5c4755/40] bg-[#5c4755/40] !important;
-  }
 }
 
 div.quill {
   height: 300px;
-  border: 2px solid #302230;
+  border: 2px solid rgb(92 71 85 / 0.4);
   border-radius: 10px;
   overflow: hidden;
-  background-color: #302230;
+  background-color: rgb(92 71 85 / 0.4);
 }
+
 div.ql-toolbar.ql-snow {
   border: none;
   border-bottom: 2px solid #dc2241;
