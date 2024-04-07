@@ -1,5 +1,6 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { authApi } from "../features/auth/api/authApiSlice";
+import { userApi } from "../features/user/api/userApiSlice";
 import userSlice from "../features/auth/authSlice";
 import {
   persistStore,
@@ -15,6 +16,7 @@ import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
+  [userApi.reducerPath]: userApi.reducer,
   user: userSlice,
 });
 const persistConfig = {
@@ -31,7 +33,9 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(authApi.middleware),
+    })
+      .concat(authApi.middleware)
+      .concat(userApi.middleware),
 });
 
 export const persistor = persistStore(store);

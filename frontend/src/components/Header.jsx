@@ -42,7 +42,7 @@ const Header = () => {
               </Link>
             )}
             {currentUser && (
-              <Link to={"/dashboar?tab=profile"}>
+              <Link to={"/dashboard?tab=profile"}>
                 <img
                   src={currentUser.imgProfile}
                   className="w-14 h-14 rounded-full object-cover"
@@ -84,7 +84,7 @@ const Header = () => {
             ))}
           </ul>
           {currentUser && (
-            <Link to={"/dashboar?tab=profile"}>
+            <Link to={"/dashboard?tab=profile"}>
               <img
                 src={currentUser.imgProfile}
                 className="w-14 h-14 my-4 rounded-full object-cover"

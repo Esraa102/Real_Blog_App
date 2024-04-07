@@ -16,10 +16,17 @@ const userSlice = createSlice({
     googleAuthSuccess: (state, action) => {
       state.currentUser = action.payload;
     },
+    updateProfileSuccess: (state, action) => {
+      state.currentUser = action.payload;
+    },
   },
 });
 
-export const { registerUserSuccess, loginUserSuccess, googleAuthSuccess } =
-  userSlice.actions;
+export const {
+  registerUserSuccess,
+  loginUserSuccess,
+  googleAuthSuccess,
+  updateProfileSuccess,
+} = userSlice.actions;
 
 export default userSlice.reducer;

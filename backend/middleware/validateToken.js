@@ -1,9 +1,10 @@
 import { customError } from "../utils/customErr.js";
 import jwt from "jsonwebtoken";
 
-export const validateToken = async (req, res, next) => {
+export const validateToken = (req, res, next) => {
   const token = req.cookies.access_token;
-
+  console.log(token);
+  console.log(req.cookies);
   if (!token) {
     return next(
       customError(
@@ -17,6 +18,7 @@ export const validateToken = async (req, res, next) => {
       return next(customError(res.status(400), "Invalid Token"));
     }
     req.user = decoded;
+    console.log(req.user);
     next();
   });
 };

@@ -2,8 +2,7 @@ import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { LogOut, DeleteAccount } from ".";
 
-
-const UpdateProfileForm = () => {
+const UpdateProfileForm = ({ sendData, imgUrl }) => {
   const { currentUser } = useSelector((state) => state.user);
   const {
     register,
@@ -11,7 +10,13 @@ const UpdateProfileForm = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    sendData({
+      id: currentUser._id,
+      imgProfile: imgUrl,
+      username: data.username,
+      password: data.newPass.length !== 0 ? data.newPass : null,
+    });
+    console.log(data, imgUrl);
   };
   return (
     <div className="my-8 w-full md:w-[80%] mx-auto">

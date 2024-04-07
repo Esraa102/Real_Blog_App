@@ -24,14 +24,17 @@ const registerUser = async (req, res, next) => {
           {
             _id: newUser._id,
             email: newUser.email,
-            password: hashedPassword,
+            password,
           },
           process.env.ACCESS_TOKEN_SECRET
         );
         const { password: encryptedPass, ...rest } = newUser._doc;
         const expireDate = new Date(Date.now() + 360000);
         res
-          .cookie("access_token", accessToken, { expires: expireDate })
+          .cookie("access_token", accessToken, {
+            httpOnly: true,
+            expires: expireDate,
+          })
           .status(200)
           .json({ userData: rest });
       }
@@ -61,7 +64,10 @@ const logInUser = async (req, res, next) => {
         const expireDate = new Date(Date.now() + 360000);
 
         res
-          .cookie("access_token", accessToken, { expires: expireDate })
+          .cookie("access_token", accessToken, {
+            httpOnly: true,
+            expires: expireDate,
+          })
           .status(200)
           .json({ userData: rest });
       } else {
@@ -94,7 +100,10 @@ const googleAuth = async (req, res, next) => {
       const expireDate = new Date(Date.now() + 360000);
 
       res
-        .cookie("access_token", accessToken, { expires: expireDate })
+        .cookie("access_token", accessToken, {
+          httpOnly: true,
+          expires: expireDate,
+        })
         .status(200)
         .json({ userData: rest });
     } else {
@@ -113,12 +122,18 @@ const googleAuth = async (req, res, next) => {
             email: newUser.email,
             password: hashedPassword,
           },
-          process.env.ACCESS_TOKEN_SECRET
+          process.env.ACCESS_TOKEN_SECRET,
+          {
+            expiresIn: "1h",
+          }
         );
         const { password: encryptedPass, ...rest } = newUser._doc;
         const expireDate = new Date(Date.now() + 360000); // for 1 hour
         res
-          .cookie("access_token", accessToken, { expires: expireDate })
+          .cookie("access_token", accessToken, {
+            httpOnly: true,
+            expires: expireDate,
+          })
           .status(200)
           .json({ userData: rest });
       }

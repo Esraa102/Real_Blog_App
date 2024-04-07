@@ -9,6 +9,10 @@ export const authApi = createApi({
       query: (userInfo) => ({
         url: "api/auth/register",
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
         body: userInfo,
       }),
       invalidatesTags: ["Users"],
@@ -17,6 +21,10 @@ export const authApi = createApi({
       query: (userInfo) => ({
         url: "api/auth/login",
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
         body: userInfo,
       }),
       invalidatesTags: ["Users"],
@@ -25,6 +33,10 @@ export const authApi = createApi({
       query: (userInfo) => ({
         url: "api/auth/google",
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
         body: userInfo,
       }),
       invalidatesTags: ["Users"],
