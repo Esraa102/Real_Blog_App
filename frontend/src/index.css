@@ -65,6 +65,9 @@ body {
   .file-label {
     @apply absolute w-[40px] h-[40px] hover:text-main transition cursor-pointer flex items-center justify-center rounded-full bottom-0 bg-[#261C28] right-4;
   }
+  .secondary-btn {
+    @apply text-[17px] text-main px-3 py-2 w-fit bg-slate-900 font-semibold  mx-auto rounded-md hover:bg-slate-950 transition;
+  }
 }
 
 ::-webkit-scrollbar {

@@ -19,7 +19,7 @@ const Sidebar = ({ tab }) => {
               <span className="hidden md:inline">Profile</span>
             </div>
             <span className=" bg-slate-900 px-3 py-1 rounded-md">
-              {currentUser.isAdmin ? "Admin" : "User"}
+              {currentUser?.isAdmin ? "Admin" : "User"}
             </span>
           </Link>
         </li>

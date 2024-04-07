@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { UpdateProfileForm, UploadImgProfile } from ".";
 import { useUpdateUserProfileMutation } from "../features/user/api/userApiSlice";
 import { updateProfileSuccess } from "../features/auth/authSlice";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 const Profile = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -11,7 +12,6 @@ const Profile = () => {
   const dispatch = useDispatch();
   const [updateProfile, { error, data, isSuccess }] =
     useUpdateUserProfileMutation();
-  console.log(data);
   useEffect(() => {
     if (error) {
       toast.error(error.data.message);
@@ -23,6 +23,12 @@ const Profile = () => {
   }, [error, isSuccess]);
   return (
     <div>
+      <Link
+        to={"/create-post"}
+        className="main-btn mx-auto mt-3 mb-6 block w-fit"
+      >
+        Create New Post
+      </Link>
       <UploadImgProfile imgUrl={imgUrl} setImgUrl={setImgUrl} />
       <UpdateProfileForm sendData={updateProfile} imgUrl={imgUrl} />
     </div>

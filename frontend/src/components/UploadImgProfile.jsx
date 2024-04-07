@@ -87,15 +87,6 @@ const UploadImgProfile = ({ imgUrl, setImgUrl }) => {
           </label>
         </form>
       </div>
-      {/* {uploadProgress > 0 && (
-        <p
-          className={`text-center font-semibold mt-3 text-sm ${
-            uploadProgress === 100 ? "text-green-600" : "text-yellow-500"
-          }`}
-        >
-          Uploading {uploadProgress} %
-        </p>
-      )} */}
       <h2 className="text-center my-6 text-2xl font-bold text-main capitalize">
         {currentUser.username}
       </h2>

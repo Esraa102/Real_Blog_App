@@ -10,6 +10,8 @@ import Profile from "./Profile";
 import UploadImgProfile from "./UploadImgProfile";
 import UpdateProfileForm from "./UpdateProfileForm";
 import DeleteAccount from "./DeleteAccount.jsx";
+import PostForm from "./PostForm.jsx";
+import UploadPostImg from "./UploadPostImg";
 export {
   Header,
   Footer,
@@ -23,4 +25,6 @@ export {
   UploadImgProfile,
   UpdateProfileForm,
   DeleteAccount,
+  PostForm,
+  UploadPostImg,
 };
