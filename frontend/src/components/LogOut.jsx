@@ -1,6 +1,30 @@
+import { useLogOutUserMutation } from "../features/auth/api/authApiSlice";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logOutUserSuccess } from "../features/auth/authSlice";
 const LogOut = ({ full }) => {
+  const [logOutUser, { data, isLoading, error, isSuccess }] =
+    useLogOutUserMutation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const logOut = () => {
+    logOutUser();
+    if (isSuccess) {
+      dispatch(logOutUserSuccess());
+      toast.success(data);
+      navigate("/sign-in");
+    }
+    if (error) {
+      toast.error(error.message);
+    }
+  };
   return (
-    <button type="button" className={`main-btn  ${full ? "w-full" : "w-fit"}`}>
+    <button
+      type="button"
+      onClick={logOut}
+      className={`main-btn  ${isLoading && "load-btn"}`}
+    >
       Log Out
     </button>
   );

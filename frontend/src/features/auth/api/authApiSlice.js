@@ -41,6 +41,16 @@ export const authApi = createApi({
       }),
       invalidatesTags: ["Users"],
     }),
+    logOutUser: builder.mutation({
+      query: () => ({
+        url: "api/auth/logout",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }),
+    }),
   }),
 });
 
@@ -48,4 +58,5 @@ export const {
   useRegisterUserMutation,
   useLoginUserMutation,
   useGoogleAuthMutation,
+  useLogOutUserMutation,
 } = authApi;
