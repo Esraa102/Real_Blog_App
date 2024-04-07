@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { UploadPostImg } from ".";
 import { categories } from "../constants";
 
-const PostForm = ({ imgUrl, setImgUrl }) => {
+const PostForm = ({ imgUrl, setImgUrl, sendData, isLoading }) => {
   const {
     register,
     handleSubmit,
@@ -13,8 +13,12 @@ const PostForm = ({ imgUrl, setImgUrl }) => {
   } = useForm();
   const [content, setContent] = useState("");
   const onSubmit = (data) => {
-    console.log(data);
-
+    sendData({
+      title: data.title,
+      content,
+      image: imgUrl,
+      category: data.category,
+    });
   };
   return (
     <form
@@ -81,7 +85,7 @@ const PostForm = ({ imgUrl, setImgUrl }) => {
         />
       </div>
       <div className="flex flex-wrap gap-4 items-center">
-        <button type="submit" className="main-btn">
+        <button type="submit" className={`main-btn ${isLoading && "load-btn"}`}>
           Publish
         </button>
         <button

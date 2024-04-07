@@ -13,10 +13,12 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { postsApiSlice } from "../features/posts/api/postsApiSlice";
 
 const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
   [userApi.reducerPath]: userApi.reducer,
+  [postsApiSlice.reducerPath]: postsApiSlice.reducer,
   user: userSlice,
 });
 const persistConfig = {
@@ -35,7 +37,8 @@ export const store = configureStore({
       },
     })
       .concat(authApi.middleware)
-      .concat(userApi.middleware),
+      .concat(userApi.middleware)
+      .concat(postsApiSlice.middleware),
 });
 
 export const persistor = persistStore(store);

@@ -2,12 +2,12 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const authApi = createApi({
   reducerPath: "auth",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/auth" }),
   tagTypes: ["Users"],
   endpoints: (builder) => ({
     registerUser: builder.mutation({
       query: (userInfo) => ({
-        url: "api/auth/register",
+        url: "register",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export const authApi = createApi({
     }),
     loginUser: builder.mutation({
       query: (userInfo) => ({
-        url: "api/auth/login",
+        url: "login",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export const authApi = createApi({
     }),
     googleAuth: builder.mutation({
       query: (userInfo) => ({
-        url: "api/auth/google",
+        url: "google",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export const authApi = createApi({
     }),
     logOutUser: builder.mutation({
       query: () => ({
-        url: "api/auth/logout",
+        url: "logout",
         method: "GET",
         headers: {
           "Content-Type": "application/json",
