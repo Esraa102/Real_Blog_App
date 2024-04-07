@@ -22,6 +22,9 @@ const userSlice = createSlice({
     logOutUserSuccess: (state) => {
       state.currentUser = null;
     },
+    deleteAccountSuccess: (state) => {
+      state.currentUser = null;
+    },
   },
 });
 
@@ -31,6 +34,7 @@ export const {
   googleAuthSuccess,
   updateProfileSuccess,
   logOutUserSuccess,
+  deleteAccountSuccess,
 } = userSlice.actions;
 
 export default userSlice.reducer;

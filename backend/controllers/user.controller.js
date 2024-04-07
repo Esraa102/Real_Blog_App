@@ -28,4 +28,23 @@ const updateUser = async (req, res, next) => {
   }
 };
 
-export { updateUser };
+const deleteUser = async (req, res, next) => {
+  if (req.user._id !== req.params.id) {
+    return next(
+      customError(403, "You Are Only Allowed To Delete Your Profile")
+    );
+  } else {
+    try {
+      const user = await User.findById(req.params.id);
+      if (!user) {
+        return next(customError(404, "User Not Found"));
+      } else {
+        await User.findByIdAndDelete(req.params.id);
+        res.status(200).json({ res: "Deleted Successfully" });
+      }
+    } catch (error) {
+      return next(customError(500, error.message));
+    }
+  }
+};
+export { updateUser, deleteUser };
