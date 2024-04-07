@@ -72,7 +72,7 @@ const UpdateProfileForm = ({ sendData, imgUrl }) => {
       </form>
       <div className="mt-8 flex gap-4 items-center flex-wrap justify-between">
         <DeleteAccount />
-        <LogOut full={false} />
+        <LogOut />
       </div>
     </div>
   );

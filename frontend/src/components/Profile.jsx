@@ -9,7 +9,7 @@ const Profile = () => {
   const { currentUser } = useSelector((state) => state.user);
   const [imgUrl, setImgUrl] = useState(currentUser.imgProfile);
   const dispatch = useDispatch();
-  const [updateProfile, { error, data, isSuccess, isLoading }] =
+  const [updateProfile, { error, data, isSuccess }] =
     useUpdateUserProfileMutation();
   console.log(data);
   useEffect(() => {

@@ -3,6 +3,7 @@ import { Dashboard, Home, Login, PageError, Projects, Register } from "./pages";
 import { Footer, Header } from "./components";
 import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
+
 function App() {
   const { currentUser } = useSelector((state) => state.user);
   return (
