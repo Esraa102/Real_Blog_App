@@ -23,9 +23,11 @@ const registerUser = async (req, res, next) => {
         const accessToken = jwt.sign(
           {
             _id: newUser._id,
+            username: newUser.username,
             email: newUser.email,
             password,
             isAdmin: newUser.isAdmin,
+            imgProfile: newUser.imgProfile,
           },
           process.env.ACCESS_TOKEN_SECRET
         );
@@ -59,6 +61,8 @@ const logInUser = async (req, res, next) => {
             email: user.email,
             password,
             isAdmin: user.isAdmin,
+            imgProfile: user.imgProfile,
+            username: user.username,
           },
           process.env.ACCESS_TOKEN_SECRET
         );
@@ -96,6 +100,8 @@ const googleAuth = async (req, res, next) => {
           email: user.email,
           password: hashedPassword,
           isAdmin: user.isAdmin,
+          imgProfile: user.imgProfile,
+          username: user.username,
         },
         process.env.ACCESS_TOKEN_SECRET
       );
@@ -125,6 +131,8 @@ const googleAuth = async (req, res, next) => {
             email: newUser.email,
             password: hashedPassword,
             isAdmin: newUser.isAdmin,
+            imgProfile: newUser.imgProfile,
+            username: user.username,
           },
           process.env.ACCESS_TOKEN_SECRET,
           {
