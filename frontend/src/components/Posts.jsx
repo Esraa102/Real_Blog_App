@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { formatDate } from "../utils/formateDate";
 import { useSelector } from "react-redux";
-import { ShowMoreBtn } from "../components";
+import { DeletePost, ShowMoreBtn } from "../components";
 import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useGetPostsMutation } from "../features/posts/api/postsApiSlice";
 import toast from "react-hot-toast";
 
@@ -17,7 +16,6 @@ const Posts = () => {
     useGetPostsMutation();
   const [postsData, setPostsData] = useState([]);
   const [showMore, setShowMore] = useState(true);
-
   useEffect(() => {
     getPosts({ term: "userId", value: userId });
   }, [userId]);
@@ -105,12 +103,11 @@ const Posts = () => {
                     </Link>
                   </td>
                   <td className="px-6 py-4">
-                    <button
-                      type="button"
-                      className="text-[#f00] hover:text-red-700 transition"
-                    >
-                      <RiDeleteBin5Fill size={26} />
-                    </button>
+                    <DeletePost
+                      postId={post._id}
+                      postsData={postsData}
+                      setPostsData={setPostsData}
+                    />
                   </td>
                 </tr>
               ))}

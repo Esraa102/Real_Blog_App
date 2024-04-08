@@ -31,6 +31,18 @@ export const postsApiSlice = createApi({
       }),
       invalidatesTags: ["Posts"],
     }),
+    deletePost: builder.mutation({
+      query: (info) => ({
+        url: `delete/${info.postId}`,
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: info,
+      }),
+      invalidatesTags: ["Posts"],
+    }),
   }),
 });
 
@@ -38,4 +50,5 @@ export const {
   useCreatePostMutation,
   useGetPostsMutation,
   useShowMorePostsMutation,
+  useDeletePostMutation,
 } = postsApiSlice;

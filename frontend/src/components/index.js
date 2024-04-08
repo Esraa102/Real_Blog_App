@@ -15,6 +15,7 @@ import UploadPostImg from "./UploadPostImg";
 import Profile from "./Profile.jsx";
 import Posts from "./Posts.jsx";
 import ShowMoreBtn from "./ShowMoreBtn.jsx";
+import DeletePost from "./DeletePost.jsx";
 export {
   Header,
   Footer,
@@ -33,4 +34,5 @@ export {
   Profile,
   Posts,
   ShowMoreBtn,
+  DeletePost,
 };
