@@ -15,8 +15,10 @@ const PostForm = ({ imgUrl, setImgUrl, sendData, isLoading }) => {
   const onSubmit = (data) => {
     sendData({
       title: data.title,
-      content,
-      image: imgUrl,
+      content: content || "No Content For This Post",
+      image:
+        imgUrl ||
+        "https://www.sitereportcard.com/wp-content/uploads/2018/04/blog-images.jpeg",
       category: data.category,
     });
   };
