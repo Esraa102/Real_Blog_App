@@ -5,13 +5,19 @@ import { useForm } from "react-hook-form";
 import { UploadPostImg } from ".";
 import { categories } from "../constants";
 
-const PostForm = ({ imgUrl, setImgUrl, sendData, isLoading }) => {
+const PostForm = ({
+  imgUrl,
+  setImgUrl,
+  sendData,
+  isLoading,
+  defaultValues,
+}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState(defaultValues?.content);
   const onSubmit = (data) => {
     sendData({
       title: data.title,
@@ -35,6 +41,7 @@ const PostForm = ({ imgUrl, setImgUrl, sendData, isLoading }) => {
           type="text"
           id="title"
           name="title"
+          defaultValue={defaultValues?.title}
           className={`form-input  ${errors.title && "input-error"}`}
           placeholder="What is the title of your post?"
           {...register("title", {
@@ -61,6 +68,7 @@ const PostForm = ({ imgUrl, setImgUrl, sendData, isLoading }) => {
           name="category"
           className="form-input cursor-pointer"
           id="category"
+          defaultValue={defaultValues?.category}
           {...register("category")}
         >
           {categories.map((category) => (

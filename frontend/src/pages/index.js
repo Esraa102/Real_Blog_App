@@ -5,6 +5,7 @@ import Projects from "./Projects";
 import Dashboard from "./Dashboard";
 import CreatePost from "./CreatePost";
 import PostPage from "./PostPage";
+import EditPost from "./EditPost";
 import PageError from "./PageError";
 
 export {
@@ -14,6 +15,7 @@ export {
   Projects,
   Dashboard,
   CreatePost,
-  PageError,
   PostPage,
+  EditPost,
+  PageError,
 };

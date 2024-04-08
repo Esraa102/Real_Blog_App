@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import {
   CreatePost,
   Dashboard,
+  EditPost,
   Home,
   Login,
   PageError,
@@ -36,6 +37,10 @@ function App() {
             element={
               currentUser ? <CreatePost /> : <Navigate to={"/sign-in"} />
             }
+          />
+          <Route
+            path="/update-post/:id"
+            element={currentUser ? <EditPost /> : <Navigate to={"/sign-in"} />}
           />
           <Route path="/posts/:slug" element={<PostPage />} />
           <Route path="*" element={<PageError />} />

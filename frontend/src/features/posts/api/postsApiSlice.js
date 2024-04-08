@@ -43,6 +43,10 @@ export const postsApiSlice = createApi({
       }),
       invalidatesTags: ["Posts"],
     }),
+    getPostById: builder.query({
+      query: (postId) => `post/${postId}`,
+      providesTags: ["Posts"],
+    }),
   }),
 });
 
@@ -51,4 +55,5 @@ export const {
   useGetPostsMutation,
   useShowMorePostsMutation,
   useDeletePostMutation,
+  useGetPostByIdQuery,
 } = postsApiSlice;
