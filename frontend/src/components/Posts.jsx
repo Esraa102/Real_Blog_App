@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { formatDate } from "../utils/formateDate";
+import { useSelector } from "react-redux";
+import { ShowMoreBtn } from "../components";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useGetPostsMutation } from "../features/posts/api/postsApiSlice";
 import toast from "react-hot-toast";
-import { formatDate } from "../utils/formateDate";
-import { useSelector } from "react-redux";
+
 const Posts = () => {
   const {
     currentUser: { _id: userId },
@@ -14,6 +16,8 @@ const Posts = () => {
   const [getPosts, { data, error, isLoading, isSuccess }] =
     useGetPostsMutation();
   const [postsData, setPostsData] = useState([]);
+  const [showMore, setShowMore] = useState(true);
+
   useEffect(() => {
     getPosts({ term: "userId", value: userId });
   }, [userId]);
@@ -23,20 +27,23 @@ const Posts = () => {
         toast.error(data.message);
       } else {
         setPostsData(data.posts);
+        if (data.posts.length < 9) {
+          setShowMore(false);
+        }
       }
     }
     if (error) {
       toast.error(error.message);
     }
-  }, [isSuccess, error, userId]);
+  }, [isSuccess, error, userId, data]);
 
   return (
-    <div>
+    <div className="px-3">
       <h2 className="mt-6 mb-1 text-3xl font-bold text-main">All Posts</h2>
       {postsData.length === 0 && !isLoading && (
         <p className="text-center my-6 text-gray-400">You Have No Posts</p>
       )}
-      <div className="relative mt-6 overflow-x-auto shadow-md sm:rounded-lg">
+      <div className="relative  my-6 overflow-x-auto shadow-md sm:rounded-lg">
         {isLoading && !postsData && <div>Loading...</div>}
         {!isLoading && postsData.length > 0 && (
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -111,6 +118,9 @@ const Posts = () => {
           </table>
         )}
       </div>
+      {showMore && (
+        <ShowMoreBtn userPosts={postsData} setPostsData={setPostsData} />
+      )}
     </div>
   );
 };

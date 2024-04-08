@@ -14,6 +14,7 @@ import PostForm from "./PostForm.jsx";
 import UploadPostImg from "./UploadPostImg";
 import Profile from "./Profile.jsx";
 import Posts from "./Posts.jsx";
+import ShowMoreBtn from "./ShowMoreBtn.jsx";
 export {
   Header,
   Footer,
@@ -31,4 +32,5 @@ export {
   UploadPostImg,
   Profile,
   Posts,
+  ShowMoreBtn,
 };

@@ -24,7 +24,18 @@ export const postsApiSlice = createApi({
       }),
       invalidatesTags: ["Posts"],
     }),
+    showMorePosts: builder.mutation({
+      query: (queryTerms) => ({
+        url: `getposts?${queryTerms.term}=${queryTerms.value}&startIndex=${queryTerms.length}`,
+        method: "GET",
+      }),
+      invalidatesTags: ["Posts"],
+    }),
   }),
 });
 
-export const { useCreatePostMutation, useGetPostsMutation } = postsApiSlice;
+export const {
+  useCreatePostMutation,
+  useGetPostsMutation,
+  useShowMorePostsMutation,
+} = postsApiSlice;
