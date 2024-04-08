@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { UpdateProfile, Sidebar, Profile } from "../components";
+import { UpdateProfile, Sidebar, Profile, Posts } from "../components";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -21,6 +21,7 @@ const Dashboard = () => {
         <div className="dashboard-main">
           {tab === "profile-update" && <UpdateProfile />}
           {tab === "profile" && <Profile />}
+          {tab === "posts" && <Posts />}
         </div>
       </div>
     </section>

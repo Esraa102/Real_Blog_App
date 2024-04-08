@@ -5,6 +5,7 @@ import {
   Home,
   Login,
   PageError,
+  PostPage,
   Projects,
   Register,
 } from "./pages";
@@ -36,6 +37,7 @@ function App() {
               currentUser ? <CreatePost /> : <Navigate to={"/sign-in"} />
             }
           />
+          <Route path="/posts/:slug" element={<PostPage />} />
           <Route path="*" element={<PageError />} />
         </Routes>
         <Toaster />

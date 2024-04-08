@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useLogOutUserMutation } from "../features/auth/api/authApiSlice";
-import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logOutUserSuccess } from "../features/auth/userSlice";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { logOutUserSuccess } from "../features/auth/userSlice";
+import { IoMdLogOut } from "react-icons/io";
 const LogOut = () => {
   const [logOutUser, { data, isLoading, error, isSuccess }] =
     useLogOutUserMutation();
@@ -27,9 +28,12 @@ const LogOut = () => {
     <button
       type="button"
       onClick={logOut}
-      className={`main-btn  ${isLoading && "load-btn"}`}
+      className={`main-btn flex items-center gap-2 justify-center  ${
+        isLoading && "load-btn"
+      }`}
     >
-      Log Out
+      <IoMdLogOut size={24} className="visible md:hidden" />
+      <span className="hidden md:inline">Log Out</span>
     </button>
   );
 };

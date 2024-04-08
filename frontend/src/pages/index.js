@@ -4,6 +4,16 @@ import Login from "./Login";
 import Projects from "./Projects";
 import Dashboard from "./Dashboard";
 import CreatePost from "./CreatePost";
+import PostPage from "./PostPage";
 import PageError from "./PageError";
 
-export { Home, Register, Login, Projects, Dashboard, CreatePost, PageError };
+export {
+  Home,
+  Register,
+  Login,
+  Projects,
+  Dashboard,
+  CreatePost,
+  PageError,
+  PostPage,
+};

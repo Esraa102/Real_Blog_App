@@ -13,6 +13,7 @@ import DeleteAccount from "./DeleteAccount.jsx";
 import PostForm from "./PostForm.jsx";
 import UploadPostImg from "./UploadPostImg";
 import Profile from "./Profile.jsx";
+import Posts from "./Posts.jsx";
 export {
   Header,
   Footer,
@@ -29,4 +30,5 @@ export {
   PostForm,
   UploadPostImg,
   Profile,
+  Posts,
 };

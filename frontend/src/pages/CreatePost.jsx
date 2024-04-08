@@ -18,7 +18,6 @@ const CreatePost = () => {
         toast.error(data.message);
       } else {
         toast.success("Post Created Successfully");
-        console.log(data.postData);
         navigate(`/posts/${data.postData.slug}`);
       }
     }

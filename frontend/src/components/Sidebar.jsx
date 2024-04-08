@@ -3,12 +3,13 @@ import { HiUser } from "react-icons/hi";
 import { FaUserCog } from "react-icons/fa";
 import { LogOut } from ".";
 import { useSelector } from "react-redux";
-
+import { BsFileEarmarkPost } from "react-icons/bs";
+import { MdAdminPanelSettings } from "react-icons/md";
 const Sidebar = ({ tab }) => {
   const { currentUser } = useSelector((state) => state.user);
   return (
     <div className="dashboard-sidebar">
-      <ul className="flex flex-row gap-4 justify-between md:flex-col md:justify-start">
+      <ul className="flex flex-row gap-3 justify-between md:flex-col md:justify-start">
         <li>
           <Link
             to={"/dashboard?tab=profile"}
@@ -17,10 +18,15 @@ const Sidebar = ({ tab }) => {
             }`}
           >
             <div className="flex items-center gap-2">
-              <HiUser size={26} />
+              {currentUser?.isAdmin ? (
+                <MdAdminPanelSettings size={26} />
+              ) : (
+                <HiUser size={26} />
+              )}
+
               <span className="hidden md:inline">Profile</span>
             </div>
-            <span className=" bg-slate-900 px-3 py-1 rounded-md">
+            <span className=" bg-slate-900 hidden md:inline px-3 py-1 rounded-md">
               {currentUser?.isAdmin ? "Admin" : "User"}
             </span>
           </Link>
@@ -35,6 +41,19 @@ const Sidebar = ({ tab }) => {
             <div className="flex items-center gap-2">
               <FaUserCog size={24} />
               <span className="hidden md:inline">Update Profile</span>
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Link
+            to={"/dashboard?tab=posts"}
+            className={`sidebar-link mb-0 ${
+              tab === "posts" && "text-main bg-[#261C28]"
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <BsFileEarmarkPost size={24} />
+              <span className="hidden md:inline">Your Posts</span>
             </div>
           </Link>
         </li>
