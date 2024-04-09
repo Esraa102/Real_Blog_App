@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { formatDate } from "../utils/formateDate";
 import { useSelector } from "react-redux";
-import { DeletePost, ShowMoreBtn } from "../components";
+import { DeletePost, Loader, ShowMoreBtn } from "../components";
 import { FaEdit } from "react-icons/fa";
 import { useGetPostsMutation } from "../features/posts/api/postsApiSlice";
 import toast from "react-hot-toast";
@@ -38,11 +38,11 @@ const Posts = () => {
   return (
     <div className="px-3">
       <h2 className="mt-6 mb-1 text-3xl font-bold text-main">All Posts</h2>
-      {postsData.length === 0 && !isLoading && (
+      {postsData.length === 0 && !isLoading && isSuccess && (
         <p className="text-center my-6 text-gray-400">You Have No Posts</p>
       )}
+      {isLoading && <Loader />}
       <div className="relative  my-6 overflow-x-auto shadow-md sm:rounded-lg">
-        {isLoading && !postsData && <div>Loading...</div>}
         {!isLoading && postsData.length > 0 && (
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-sm text-white uppercase bg-[#5C4755]/40">
@@ -115,7 +115,7 @@ const Posts = () => {
           </table>
         )}
       </div>
-      {showMore && (
+      {showMore && !isLoading && (
         <ShowMoreBtn userPosts={postsData} setPostsData={setPostsData} />
       )}
     </div>

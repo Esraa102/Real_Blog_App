@@ -16,6 +16,7 @@ import Profile from "./Profile.jsx";
 import Posts from "./Posts.jsx";
 import ShowMoreBtn from "./ShowMoreBtn.jsx";
 import DeletePost from "./DeletePost.jsx";
+import Loader from "./Loader.jsx";
 export {
   Header,
   Footer,
@@ -35,4 +36,5 @@ export {
   Posts,
   ShowMoreBtn,
   DeletePost,
+  Loader,
 };
