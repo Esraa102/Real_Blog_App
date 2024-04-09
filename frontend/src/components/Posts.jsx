@@ -31,7 +31,7 @@ const Posts = () => {
       }
     }
     if (error) {
-      toast.error(error.message);
+      toast.error(error.error);
     }
   }, [isSuccess, error, userId, data]);
 
