@@ -134,16 +134,4 @@ const updatePost = async (req, res, next) => {
   }
 };
 
-const getPostBySlug = async (req, res, next) => {
-  try {
-    const post = await Post.findOne({ slug: req.params.slug });
-    if (!post) {
-      next(customError(404, "Post Not Found"));
-    } else {
-      res.status(200).json({ post });
-    }
-  } catch (error) {
-    next(customError(500, error.message));
-  }
-};
-export { createPost, getPosts, deletePost, getPost, updatePost, getPostBySlug };
+export { createPost, getPosts, deletePost, getPost, updatePost };

@@ -80,7 +80,7 @@ const Posts = () => {
                     {formatDate(post.updatedAt)}
                   </th>
                   <td className="py-4">
-                    <Link to={`/posts/${post.slug}`}>
+                    <Link to={`/posts/${post._id}`}>
                       <img
                         src={post.image}
                         alt=""
@@ -89,7 +89,7 @@ const Posts = () => {
                     </Link>
                   </td>
                   <td className="px-6 hover:text-main transition text-lg capitalize font-semibold">
-                    <Link to={`/posts/${post.slug}`}>
+                    <Link to={`/posts/${post._id}`}>
                       {`${post.title.slice(0, 20)}`}
                     </Link>
                   </td>

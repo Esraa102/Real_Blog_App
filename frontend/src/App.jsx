@@ -42,7 +42,7 @@ function App() {
             path="/update-post/:id"
             element={currentUser ? <EditPost /> : <Navigate to={"/sign-in"} />}
           />
-          <Route path="/posts/:slug" element={<PostPage />} />
+          <Route path="/posts/:id" element={<PostPage />} />
           <Route path="*" element={<PageError />} />
         </Routes>
         <Toaster />

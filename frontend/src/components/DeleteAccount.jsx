@@ -31,6 +31,7 @@ const DeleteAccount = () => {
     <button
       type="button"
       onClick={deleteUser}
+      disabled={isLoading}
       className={`main-btn block bg-red-600 border-red-600 hover:text-white hover:bg-red-800 hover:border-red-800 ${
         isLoading && "load-btn"
       } `}

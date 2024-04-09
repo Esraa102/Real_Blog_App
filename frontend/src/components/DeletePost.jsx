@@ -36,9 +36,9 @@ const DeletePost = ({ postId, postsData, setPostsData }) => {
       onClick={handleDeletePost}
       disabled={isLoading}
       type="button"
-      className={`text-[#f00] hover:text-red-700 transition ${
-        isLoading && "cursor-not-allowed opacity-40"
-      }`}
+      className={`text-[#f00] hover:text-red-600 transition ${
+        isLoading && "cursor-not-allowed opacity-50"
+      } `}
     >
       <RiDeleteBin5Fill size={26} />
     </button>
