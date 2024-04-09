@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { HiUser } from "react-icons/hi";
 import { FaUserCog } from "react-icons/fa";
 import { LogOut } from ".";
-import { useSelector } from "react-redux";
 import { BsFileEarmarkPost } from "react-icons/bs";
-import { MdAdminPanelSettings } from "react-icons/md";
+import { MdAdminPanelSettings, MdCreateNewFolder } from "react-icons/md";
+
 const Sidebar = ({ tab }) => {
   const { currentUser } = useSelector((state) => state.user);
   return (
@@ -56,6 +57,14 @@ const Sidebar = ({ tab }) => {
               <span className="hidden md:inline">Your Posts</span>
             </div>
           </Link>
+        </li>
+        <li>
+          <NavLink to={"/create-post"} className="sidebar-link mb-0">
+            <div className="flex items-center gap-2">
+              <MdCreateNewFolder size={24} />
+              <span className="hidden md:inline">Create New Post</span>
+            </div>
+          </NavLink>
         </li>
       </ul>
       <LogOut />

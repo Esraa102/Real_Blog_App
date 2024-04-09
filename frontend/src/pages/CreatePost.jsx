@@ -34,6 +34,7 @@ const CreatePost = () => {
           setImgUrl={setImgUrl}
           sendData={createNewPost}
           isLoading={isLoading}
+          isUpdate={false}
         />
       </div>
     </section>
