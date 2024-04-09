@@ -89,4 +89,49 @@ const deletePost = async (req, res, next) => {
     return next(customError(500, error.message));
   }
 };
-export { createPost, getPosts, deletePost };
+const getPost = async (req, res, next) => {
+  const { postId } = req.params;
+  try {
+    const post = await Post.findById(postId);
+    if (!post) {
+      next(customError(404, "Post Not Found"));
+    } else {
+      res.status(200).json({ post });
+    }
+  } catch (error) {
+    next(customError(500, error.message));
+  }
+};
+
+const updatePost = async (req, res, next) => {
+  const { postId } = req.params;
+  const { userId, title, image, content, category } = req.body;
+  try {
+    if (req.user._id !== userId) {
+      return next(customError(403, "You're only allowed to update your posts"));
+    } else {
+      const slug = req.body.title
+        .split(" ")
+        .join("-")
+        .toLowerCase()
+        .replace(/[^A-Za-z0-9\-]/g, "");
+      const updatePost = await Post.findByIdAndUpdate(
+        postId,
+        {
+          $set: {
+            title,
+            content,
+            image,
+            category,
+            slug,
+          },
+        },
+        { new: true }
+      );
+      res.status(200).json({ post: updatePost });
+    }
+  } catch (error) {
+    return next(customError(500, error.message));
+  }
+};
+export { createPost, getPosts, deletePost, getPost, updatePost };
