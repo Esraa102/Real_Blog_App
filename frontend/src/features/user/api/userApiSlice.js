@@ -25,8 +25,37 @@ export const userApi = createApi({
         credentials: "include",
       }),
     }),
+    getAllUser: builder.mutation({
+      query: () => ({
+        url: "getusers",
+        method: "GET",
+        credentials: "include",
+      }),
+    }),
+    showMoreUsers: builder.mutation({
+      query: (startIndex) => ({
+        url: `getusers?startIndex=${startIndex}`,
+        method: "GET",
+        credentials: "include",
+      }),
+    }),
+    deleteUser: builder.mutation({
+      query: (id) => ({
+        url: `/deleteuser/${id}`,
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }),
+    }),
   }),
 });
 
-export const { useUpdateUserProfileMutation, useDeleteUserAccountMutation } =
-  userApi;
+export const {
+  useUpdateUserProfileMutation,
+  useDeleteUserAccountMutation,
+  useGetAllUserMutation,
+  useShowMoreUsersMutation,
+  useDeleteUserMutation,
+} = userApi;

@@ -1,32 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useShowMoreUsersMutation } from "../features/user/api/userApiSlice";
 import { useEffect } from "react";
-import { useShowMorePostsMutation } from "../features/posts/api/postsApiSlice";
-import { useSelector } from "react-redux";
-import { Loader } from ".";
 import toast from "react-hot-toast";
-
-const ShowMoreBtn = ({ userPosts, setPostsData }) => {
-  const {
-    currentUser: { _id: userId },
-  } = useSelector((state) => state.user);
-  const [showMorePosts, { data, isSuccess, error, isLoading }] =
-    useShowMorePostsMutation();
+import Loader from "./Loader";
+const ShowMoreUsers = ({ usersData, setUsersData }) => {
+  const [ShowMoreUsers, { data, isError, error, isLoading, isSuccess }] =
+    useShowMoreUsersMutation();
   const handleShowMore = () => {
-    const startIndex = userPosts?.length;
-    showMorePosts({ term: "userId", value: userId, length: startIndex });
+    const startIndex = usersData?.length;
+    ShowMoreUsers(startIndex);
   };
   useEffect(() => {
     if (isSuccess) {
       if (data.message) {
         toast.error(data.message);
       } else {
-        setPostsData(() => [...userPosts, ...data.posts]);
+        setUsersData(() => [...usersData, ...data.users]);
       }
     }
-    if (error) {
+    if (isError) {
       toast.error(error.data.message);
     }
-  }, [error, isSuccess, userId]);
+  }, [isError, isSuccess]);
   return (
     <>
       {isLoading && <Loader />}
@@ -43,4 +38,4 @@ const ShowMoreBtn = ({ userPosts, setPostsData }) => {
   );
 };
 
-export default ShowMoreBtn;
+export default ShowMoreUsers;

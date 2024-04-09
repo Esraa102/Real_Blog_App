@@ -28,7 +28,7 @@ const updateUser = async (req, res, next) => {
   }
 };
 
-const deleteUser = async (req, res, next) => {
+const deleteAccount = async (req, res, next) => {
   if (req.user._id !== req.params.id) {
     return next(
       customError(403, "You Are Only Allowed To Delete Your Profile")
@@ -72,7 +72,7 @@ const getAllusers = async (req, res, next) => {
         now.getMonth() - 1,
         now.getDate()
       );
-      const totalUsersLastMonth = await Post.countDocuments({
+      const totalUsersLastMonth = await User.countDocuments({
         createdAt: { $gte: oneMonthAgo }, // to get the users create one month ago
       });
       res.status(200).json({
@@ -85,4 +85,17 @@ const getAllusers = async (req, res, next) => {
     }
   }
 };
-export { updateUser, deleteUser, getAllusers };
+
+const deleteUser = async (req, res, next) => {
+  if (!req.user.isAdmin) {
+    next(customError(res.status(403), "Only Admins Can Delete Users"));
+  } else {
+    try {
+      await User.findByIdAndDelete(req.params.id);
+      res.status(200).json("User Deleted Successfully");
+    } catch (error) {
+      next(customError(res.status(500), error.message));
+    }
+  }
+};
+export { updateUser, deleteAccount, getAllusers, deleteUser };

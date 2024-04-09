@@ -17,6 +17,10 @@ import Posts from "./Posts.jsx";
 import ShowMoreBtn from "./ShowMoreBtn.jsx";
 import DeletePost from "./DeletePost.jsx";
 import Loader from "./Loader.jsx";
+import AdminDashboard from "./AdminDashboard.jsx";
+import Users from "./Users.jsx";
+import ShowMoreUsers from "./ShowMoreUsers.jsx";
+import DeleteUser from "./DeleteUser.jsx";
 export {
   Header,
   Footer,
@@ -37,4 +41,8 @@ export {
   ShowMoreBtn,
   DeletePost,
   Loader,
+  AdminDashboard,
+  Users,
+  ShowMoreUsers,
+  DeleteUser,
 };

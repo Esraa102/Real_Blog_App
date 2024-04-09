@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { UpdateProfile, Sidebar, Profile, Posts } from "../components";
+import {
+  UpdateProfile,
+  Sidebar,
+  Profile,
+  Posts,
+  AdminDashboard,
+  Users,
+} from "../components";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -22,6 +29,8 @@ const Dashboard = () => {
           {tab === "profile-update" && <UpdateProfile />}
           {tab === "profile" && <Profile />}
           {tab === "posts" && <Posts />}
+          {tab === "dashboard" && <AdminDashboard />}
+          {tab === "users" && <Users />}
         </div>
       </div>
     </section>
