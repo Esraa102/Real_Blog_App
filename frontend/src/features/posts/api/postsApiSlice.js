@@ -5,6 +5,13 @@ export const postsApiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/posts" }),
   tagTypes: ["Posts"],
   endpoints: (builder) => ({
+    getPostById: builder.mutation({
+      query: (postId) => ({
+        url: `post/${postId}`,
+        method: "GET",
+        credentials: "include",
+      }),
+    }),
     getPosts: builder.mutation({
       query: (queryTerm) => ({
         url: `getposts?${queryTerm.term}=${queryTerm.value}`,
@@ -43,9 +50,17 @@ export const postsApiSlice = createApi({
       }),
       invalidatesTags: ["Posts"],
     }),
-    getPostById: builder.query({
-      query: (postId) => `post/${postId}`,
-      providesTags: ["Posts"],
+    updatePost: builder.mutation({
+      query: (info) => ({
+        url: `/update/${info.postId}`,
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: info,
+      }),
+      invalidatesTags: ["Posts"],
     }),
   }),
 });
@@ -55,5 +70,6 @@ export const {
   useGetPostsMutation,
   useShowMorePostsMutation,
   useDeletePostMutation,
-  useGetPostByIdQuery,
+  useGetPostByIdMutation,
+  useUpdatePostMutation,
 } = postsApiSlice;

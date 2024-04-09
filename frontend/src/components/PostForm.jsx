@@ -4,6 +4,7 @@ import ReactQuill from "react-quill";
 import { useForm } from "react-hook-form";
 import { UploadPostImg } from ".";
 import { categories } from "../constants";
+import { useSelector } from "react-redux";
 
 const PostForm = ({
   imgUrl,
@@ -11,22 +12,40 @@ const PostForm = ({
   sendData,
   isLoading,
   defaultValues,
+  isUpdate,
 }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const [content, setContent] = useState(defaultValues?.content);
+  const {
+    currentUser: { _id: userId },
+  } = useSelector((state) => state.user);
+
   const onSubmit = (data) => {
-    sendData({
-      title: data.title,
-      content: content || "No Content For This Post",
-      image:
-        imgUrl ||
-        "https://www.sitereportcard.com/wp-content/uploads/2018/04/blog-images.jpeg",
-      category: data.category,
-    });
+    if (isUpdate) {
+      sendData({
+        title: data.title,
+        content: content || "No Content For This Post",
+        image:
+          imgUrl ||
+          "https://www.sitereportcard.com/wp-content/uploads/2018/04/blog-images.jpeg",
+        category: data.category,
+        userId,
+      });
+    } else {
+      sendData({
+        title: data.title,
+        content: content || "No Content For This Post",
+        image:
+          imgUrl ||
+          "https://www.sitereportcard.com/wp-content/uploads/2018/04/blog-images.jpeg",
+        category: data.category,
+      });
+    }
   };
   return (
     <form
@@ -95,7 +114,11 @@ const PostForm = ({
         />
       </div>
       <div className="flex flex-wrap gap-4 items-center">
-        <button type="submit" className={`main-btn ${isLoading && "load-btn"}`}>
+        <button
+          type="submit"
+          disabled={isLoading}
+          className={`main-btn ${isLoading && "load-btn"}`}
+        >
           Publish
         </button>
         <button
