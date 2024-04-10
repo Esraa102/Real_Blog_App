@@ -8,6 +8,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Loader } from "../components";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { formatDate } from "../utils/formateDate";
 
 const PostPage = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -61,15 +62,31 @@ const PostPage = () => {
           <h1 className="my-6 text-2xl text-main capitalize font-bold text-center">
             {data.post.title}
           </h1>
+          <Link
+            to={`/search?category=${data.post.category}`}
+            className="capitalize block w-fit mx-auto text-center font-semibold text-lg bg-slate-900 my-4 text-main px-4 py-2 rounded-md"
+          >
+            {data.post.category}
+          </Link>
           <img
             src={data.post.image}
             className="w-full h-[350px] object-cover rounded-lg my-6"
             alt="post-img"
           />
-          <div className="mb-6">{data.post.content}</div>
-          <p className=" font-semibold text-lg bg-slate-900 my-4 text-main hidden md:inline px-3 py-1 rounded-md">
-            {data.post.category}
-          </p>
+          <div className="flex gap-4 flex-wrap items-center justify-between">
+            <div className="flex flex-wrap text-gray-400 text-sm gap-3">
+              <span>Created At: {formatDate(data.post.createdAt)}</span>
+              <span>Updated At: {formatDate(data.post.updatedAt)}</span>
+            </div>
+            <p className=" mt-2 text-main font-semibold">
+              [ {Math.ceil(data.post.content.length / 1000)} ] Mins Read
+            </p>
+          </div>
+          <div
+            className="my-6 post-content"
+            dangerouslySetInnerHTML={{ __html: data.post.content }}
+          ></div>
+
           <div className="mt-6 flex flex-wrap gap-6 items-center">
             {currentUser._id === data.post.author.userId && (
               <Link to={`/update-post/${data.post._id}`} className="main-btn">

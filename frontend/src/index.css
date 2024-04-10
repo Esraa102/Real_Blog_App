@@ -110,7 +110,24 @@ path.CircularProgressbar-path {
 path.CircularProgressbar-trail {
   stroke: #261c29 !important;
 }
-
+.post-content h1 {
+  margin: 10px 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+.post-content h2 {
+  margin: 8px 0;
+  font-size: 23px;
+  font-weight: bold;
+}
+.post-content p {
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+.post-content a {
+  color: #0078ff !important;
+  text-decoration: underline !important;
+}
 /* HTML: <div class="loader"></div> */
 .loader {
   width: 45px;

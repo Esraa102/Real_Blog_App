@@ -11,9 +11,13 @@ const PostCard = ({ id, title, image, category, content }) => {
       <p className="px-2 text-xl font-semibold text-main">
         {title.length < 20 ? title : `${title.slice(0, 20)}...`}
       </p>
-      <p className="text-gray-300 px-2">
-        {content.length < 200 ? content : `${content.slice(0, 200)}...`}
-      </p>
+      <p
+        className="text-gray-300 px-2"
+        dangerouslySetInnerHTML={{
+          __html:
+            content.length < 300 ? content : `${content.slice(0, 300)}...`,
+        }}
+      ></p>
       <p
         className="secondary-btn text-sm mx-0 px-2 capitalize
       absolute top-6 right-6"

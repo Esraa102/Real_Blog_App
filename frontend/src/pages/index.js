@@ -6,6 +6,7 @@ import Dashboard from "./Dashboard";
 import CreatePost from "./CreatePost";
 import PostPage from "./PostPage";
 import EditPost from "./EditPost";
+import UserProfile from "./UserProfile";
 import PageError from "./PageError";
 
 export {
@@ -17,5 +18,6 @@ export {
   CreatePost,
   PostPage,
   EditPost,
+  UserProfile,
   PageError,
 };
