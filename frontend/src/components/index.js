@@ -23,7 +23,7 @@ import ShowMoreUsers from "./ShowMoreUsers.jsx";
 import DeleteUser from "./DeleteUser.jsx";
 import Posts from "./Posts.jsx";
 import PostCard from "./PostCard.jsx";
-
+import CallToAction from "./CallToAction.jsx";
 export {
   Header,
   Footer,
@@ -50,4 +50,5 @@ export {
   DeleteUser,
   Posts,
   PostCard,
+  CallToAction,
 };

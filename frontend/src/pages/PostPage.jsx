@@ -5,7 +5,7 @@ import {
   useDeletePostMutation,
 } from "../features/posts/api/postsApiSlice";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { Loader } from "../components";
+import { CallToAction, Loader } from "../components";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { formatDate } from "../utils/formateDate";
@@ -86,7 +86,9 @@ const PostPage = () => {
             className="my-6 post-content"
             dangerouslySetInnerHTML={{ __html: data.post.content }}
           ></div>
-
+          <div className="max-w-4xl my-14 mx-auto w-full">
+            <CallToAction />
+          </div>
           <div className="mt-6 flex flex-wrap gap-6 items-center">
             {currentUser._id === data.post.author.userId && (
               <Link to={`/update-post/${data.post._id}`} className="main-btn">
