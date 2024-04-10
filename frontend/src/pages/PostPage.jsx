@@ -5,7 +5,7 @@ import {
   useDeletePostMutation,
 } from "../features/posts/api/postsApiSlice";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { CallToAction, Loader } from "../components";
+import { CallToAction, CommentSection, Loader } from "../components";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { formatDate } from "../utils/formateDate";
@@ -89,14 +89,17 @@ const PostPage = () => {
           <div className="max-w-4xl my-14 mx-auto w-full">
             <CallToAction />
           </div>
+          <div>
+            <CommentSection postId={data.post._id} />
+          </div>
           <div className="mt-6 flex flex-wrap gap-6 items-center">
-            {currentUser._id === data.post.author.userId && (
+            {currentUser?._id === data.post.author.userId && (
               <Link to={`/update-post/${data.post._id}`} className="main-btn">
                 Update Post
               </Link>
             )}
-            {currentUser.isAdmin ||
-              (currentUser._id === data.post.author.userId && (
+            {currentUser?.isAdmin ||
+              (currentUser?._id === data.post.author.userId && (
                 <button
                   type="button"
                   onClick={handleDeletePost}

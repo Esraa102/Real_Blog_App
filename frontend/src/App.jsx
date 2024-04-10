@@ -14,11 +14,13 @@ import {
 import { Footer, Header } from "./components";
 import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const { currentUser } = useSelector((state) => state.user);
   return (
     <>
+      <ScrollToTop />
       <Header />
       <div className="bg min-h-screen">
         <Routes>

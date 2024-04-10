@@ -24,6 +24,8 @@ import DeleteUser from "./DeleteUser.jsx";
 import Posts from "./Posts.jsx";
 import PostCard from "./PostCard.jsx";
 import CallToAction from "./CallToAction.jsx";
+import CommentSection from "./CommentSection.jsx";
+
 export {
   Header,
   Footer,
@@ -51,4 +53,5 @@ export {
   Posts,
   PostCard,
   CallToAction,
+  CommentSection,
 };
