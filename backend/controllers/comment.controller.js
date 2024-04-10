@@ -49,4 +49,28 @@ const likeComment = async (req, res, next) => {
     next(customError(res.status(500), error.message));
   }
 };
-export { createComment, getPostComments, likeComment };
+const updateComment = async (req, res, next) => {
+  if (req.user._id !== req.body.userId) {
+    next(
+      customError(
+        res.status(403),
+        "You're Only Allowed To Update Your Comments"
+      )
+    );
+  } else {
+    try {
+      const updatedComment = await Comment.findByIdAndUpdate(
+        req.params.commentId,
+        {
+          $set: {
+            content: req.body.content,
+          },
+        }
+      );
+      res.status(200).json(updatedComment);
+    } catch (error) {
+      next(customError(res.status(500), error.message));
+    }
+  }
+};
+export { createComment, getPostComments, likeComment, updateComment };
