@@ -59,15 +59,21 @@ const updateComment = async (req, res, next) => {
     );
   } else {
     try {
-      const updatedComment = await Comment.findByIdAndUpdate(
-        req.params.commentId,
-        {
-          $set: {
-            content: req.body.content,
+      const comment = await Comment.findById(req.params.commentId);
+      if (!comment) {
+        next(customError(res.status(404), "Comment Not Found"));
+      } else {
+        const updatedComment = await Comment.findByIdAndUpdate(
+          req.params.commentId,
+          {
+            $set: {
+              content: req.body.content,
+            },
           },
-        }
-      );
-      res.status(200).json(updatedComment);
+          { new: true }
+        );
+        res.status(200).json(updatedComment);
+      }
     } catch (error) {
       next(customError(res.status(500), error.message));
     }

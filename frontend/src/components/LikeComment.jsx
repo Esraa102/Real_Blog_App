@@ -33,7 +33,7 @@ const LikeComment = ({ commentId, numberOfLiked, isUserLiked }) => {
       {isLiked ? (
         <AiFillLike size={20} color="#f00" />
       ) : (
-        <AiOutlineLike size={18} />
+        <AiOutlineLike size={18} className="hover:text-blue-600 transition" />
       )}
       <span>{likes}</span>
     </button>
