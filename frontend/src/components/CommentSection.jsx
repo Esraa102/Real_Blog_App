@@ -5,6 +5,7 @@ import { IoSend } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { useCreateCommentMutation } from "../features/comments/api/commentApi";
 import toast from "react-hot-toast";
+import Comments from "./Comments";
 
 const CommentSection = ({ postId }) => {
   const { currentUser } = useSelector((state) => state.user);
@@ -30,7 +31,7 @@ const CommentSection = ({ postId }) => {
       if (data.message) {
         toast.error(data.message);
       } else {
-        console.log(data.comment);
+        console.log(data);
         setComment("");
       }
     }
@@ -97,6 +98,7 @@ const CommentSection = ({ postId }) => {
           </button>
         </form>
       )}
+      <Comments postId={postId} />
     </div>
   );
 };

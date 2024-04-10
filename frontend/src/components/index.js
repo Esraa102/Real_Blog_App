@@ -25,7 +25,10 @@ import Posts from "./Posts.jsx";
 import PostCard from "./PostCard.jsx";
 import CallToAction from "./CallToAction.jsx";
 import CommentSection from "./CommentSection.jsx";
-
+import Comments from "./Comments.jsx";
+import EditComment from "./EditComment.jsx";
+import DeleteComment from "./DeleteComment.jsx";
+import LikeComment from "./LikeComment.jsx";
 export {
   Header,
   Footer,
@@ -54,4 +57,8 @@ export {
   PostCard,
   CallToAction,
   CommentSection,
+  Comments,
+  EditComment,
+  LikeComment,
+  DeleteComment,
 };
