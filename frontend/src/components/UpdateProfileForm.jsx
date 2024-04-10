@@ -16,7 +16,7 @@ const UpdateProfileForm = ({ sendData, imgUrl }) => {
       username: data.username,
       password: data.newPass.length !== 0 ? data.newPass : null,
     });
-    console.log(data, imgUrl);
+
   };
   return (
     <div className="my-8 w-full md:w-[80%] mx-auto">

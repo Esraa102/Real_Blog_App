@@ -49,6 +49,12 @@ export const userApi = createApi({
         credentials: "include",
       }),
     }),
+    getUserById: builder.mutation({
+      query: (userId) => ({
+        url: `/user/${userId}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -58,4 +64,5 @@ export const {
   useGetAllUserMutation,
   useShowMoreUsersMutation,
   useDeleteUserMutation,
+  useGetUserByIdMutation,
 } = userApi;

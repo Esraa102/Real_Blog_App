@@ -13,7 +13,7 @@ import DeleteAccount from "./DeleteAccount.jsx";
 import PostForm from "./PostForm.jsx";
 import UploadPostImg from "./UploadPostImg";
 import Profile from "./Profile.jsx";
-import Posts from "./Posts.jsx";
+import DashboardPosts from "./DashboardPosts.jsx";
 import ShowMoreBtn from "./ShowMoreBtn.jsx";
 import DeletePost from "./DeletePost.jsx";
 import Loader from "./Loader.jsx";
@@ -21,6 +21,9 @@ import AdminDashboard from "./AdminDashboard.jsx";
 import Users from "./Users.jsx";
 import ShowMoreUsers from "./ShowMoreUsers.jsx";
 import DeleteUser from "./DeleteUser.jsx";
+import Posts from "./Posts.jsx";
+import PostCard from "./PostCard.jsx";
+
 export {
   Header,
   Footer,
@@ -37,7 +40,7 @@ export {
   PostForm,
   UploadPostImg,
   Profile,
-  Posts,
+  DashboardPosts,
   ShowMoreBtn,
   DeletePost,
   Loader,
@@ -45,4 +48,6 @@ export {
   Users,
   ShowMoreUsers,
   DeleteUser,
+  Posts,
+  PostCard,
 };

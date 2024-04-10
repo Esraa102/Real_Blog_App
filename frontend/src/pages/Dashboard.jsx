@@ -4,7 +4,7 @@ import {
   UpdateProfile,
   Sidebar,
   Profile,
-  Posts,
+  DashboardPosts,
   AdminDashboard,
   Users,
 } from "../components";
@@ -28,7 +28,7 @@ const Dashboard = () => {
         <div className="dashboard-main">
           {tab === "profile-update" && <UpdateProfile />}
           {tab === "profile" && <Profile />}
-          {tab === "posts" && <Posts />}
+          {tab === "posts" && <DashboardPosts />}
           {tab === "dashboard" && <AdminDashboard />}
           {tab === "users" && <Users />}
         </div>

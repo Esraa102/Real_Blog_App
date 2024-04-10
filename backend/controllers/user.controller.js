@@ -14,7 +14,8 @@ const updateUser = async (req, res, next) => {
         {
           $set: {
             username: req.body.username,
-            password: req.body.password,
+            password:
+              req.body.password || bcryptjs.hashSync(req.user.password, 10),
             imgProfile: req.body.imgProfile,
           },
         },
@@ -98,4 +99,13 @@ const deleteUser = async (req, res, next) => {
     }
   }
 };
-export { updateUser, deleteAccount, getAllusers, deleteUser };
+const getUserById = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    const { password, ...rest } = user._doc;
+    res.status(200).json({ userData: rest });
+  } catch (error) {
+    next(customError(res.status(500), error.message));
+  }
+};
+export { updateUser, deleteAccount, getAllusers, deleteUser, getUserById };

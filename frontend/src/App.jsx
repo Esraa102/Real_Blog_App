@@ -9,6 +9,7 @@ import {
   PostPage,
   Projects,
   Register,
+  UserProfile,
 } from "./pages";
 import { Footer, Header } from "./components";
 import { Toaster } from "react-hot-toast";
@@ -43,6 +44,7 @@ function App() {
             element={currentUser ? <EditPost /> : <Navigate to={"/sign-in"} />}
           />
           <Route path="/posts/:id" element={<PostPage />} />
+          <Route path="/profile/:id" element={<UserProfile />} />
           <Route path="*" element={<PageError />} />
         </Routes>
         <Toaster />

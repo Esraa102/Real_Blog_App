@@ -49,11 +49,13 @@ const registerUser = async (req, res, next) => {
 
 const logInUser = async (req, res, next) => {
   const { email, password } = req.body;
+  console.log(req.body);
   try {
     const user = await User.findOne({ email });
     if (!user) {
       next(customError(res.status(401), "User Is Unathorized"));
     } else {
+      console.log(user.password);
       if (await bcryptjs.compare(password, user.password)) {
         const accessToken = jwt.sign(
           {
@@ -82,6 +84,7 @@ const logInUser = async (req, res, next) => {
     }
   } catch (error) {
     next(customError(res.status(500), error.message));
+    console.log(error);
   }
 };
 

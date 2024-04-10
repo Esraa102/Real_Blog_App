@@ -38,6 +38,13 @@ export const postsApiSlice = createApi({
       }),
       invalidatesTags: ["Posts"],
     }),
+    getAllUserPosts: builder.mutation({
+      query: (queryTerms) => ({
+        url: `getposts?${queryTerms.term}=${queryTerms.value}&limit=1000`,
+        method: "GET",
+      }),
+      invalidatesTags: ["Posts"],
+    }),
     deletePost: builder.mutation({
       query: (info) => ({
         url: `delete/${info.postId}`,
@@ -72,4 +79,5 @@ export const {
   useDeletePostMutation,
   useGetPostByIdMutation,
   useUpdatePostMutation,
+  useGetAllUserPostsMutation,
 } = postsApiSlice;
