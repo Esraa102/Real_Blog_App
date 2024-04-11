@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/user" }),
+  tagTypes: ["Users"],
   endpoints: (builder) => ({
     updateUserProfile: builder.mutation({
       query: (userInfo) => ({
@@ -14,6 +15,7 @@ export const userApi = createApi({
         credentials: "include",
         body: userInfo,
       }),
+      invalidatesTags: ["Users"],
     }),
     deleteUserAccount: builder.mutation({
       query: (id) => ({
@@ -24,13 +26,14 @@ export const userApi = createApi({
         },
         credentials: "include",
       }),
+      invalidatesTags: ["Users"],
     }),
-    getAllUser: builder.mutation({
+    getAllUsers: builder.query({
       query: () => ({
         url: "getusers",
-        method: "GET",
         credentials: "include",
       }),
+      providesTags: ["Users"],
     }),
     showMoreUsers: builder.mutation({
       query: (startIndex) => ({
@@ -38,6 +41,7 @@ export const userApi = createApi({
         method: "GET",
         credentials: "include",
       }),
+      invalidatesTags: ["Users"],
     }),
     deleteUser: builder.mutation({
       query: (id) => ({
@@ -48,12 +52,13 @@ export const userApi = createApi({
         },
         credentials: "include",
       }),
+      invalidatesTags: ["Users"],
     }),
-    getUserById: builder.mutation({
+    getUsrById: builder.query({
       query: (userId) => ({
-        url: `/user/${userId}`,
-        method: "GET",
+        url: `user/${userId}`,
       }),
+      providesTags: ["Users"],
     }),
   }),
 });
@@ -61,8 +66,8 @@ export const userApi = createApi({
 export const {
   useUpdateUserProfileMutation,
   useDeleteUserAccountMutation,
-  useGetAllUserMutation,
+  useGetAllUsersQuery,
   useShowMoreUsersMutation,
   useDeleteUserMutation,
-  useGetUserByIdMutation,
+  useGetUsrByIdQuery,
 } = userApi;

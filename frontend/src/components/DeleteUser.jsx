@@ -3,7 +3,7 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import { useDeleteUserMutation } from "../features/user/api/userApiSlice";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
-const DeleteUser = ({ userId, usersData, setUsersData }) => {
+const DeleteUser = ({ userId }) => {
   const [deleteUser, { data, isError, error, isSuccess, isLoading }] =
     useDeleteUserMutation();
   const handleDeleteUser = () => {
@@ -14,11 +14,7 @@ const DeleteUser = ({ userId, usersData, setUsersData }) => {
       if (data.message) {
         toast.error(data.message);
       } else {
-        setUsersData(() =>
-          usersData.filter((user) => {
-            return user._id !== userId;
-          })
-        );
+        console.log(data);
         toast.success(data);
       }
     }

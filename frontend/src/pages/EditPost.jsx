@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { Loader, PostForm } from "../components";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import {
   useGetPostByIdMutation,
@@ -21,6 +21,7 @@ const EditPost = () => {
       isLoading: isGettingPost,
     },
   ] = useGetPostByIdMutation();
+  const navigate = useNavigate();
   const [
     updatePost,
     {
@@ -45,6 +46,7 @@ const EditPost = () => {
     if (isUpdatingSuccess) {
       console.log(updatedPost);
       toast.success("Updated Successfully");
+      navigate(`/posts/${updatedPost.post._id}`);
     }
     if (isErrorUpdating) {
       toast.error(updatingError.data.message);

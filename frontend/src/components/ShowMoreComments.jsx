@@ -1,25 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useShowMoreUsersMutation } from "../features/user/api/userApiSlice";
 import { useEffect } from "react";
+import { useShowMoreCommentsMutation } from "../features/comments/api/commentApi";
 import toast from "react-hot-toast";
-import Loader from "./Loader";
-const ShowMoreUsers = ({ usersData, setUsersData, setShowMore }) => {
-  const [ShowMoreUsers, { data, isError, error, isLoading, isSuccess }] =
-    useShowMoreUsersMutation();
+import { Loader } from ".";
+const ShowMoreComments = ({ commentsData, setCommentsData, setShowMore }) => {
+  const [showMoreComments, { data, isError, isSuccess, error, isLoading }] =
+    useShowMoreCommentsMutation();
   const handleShowMore = () => {
-    const startIndex = usersData?.length;
-    ShowMoreUsers(startIndex);
+    const startIndex = commentsData?.length;
+    console.log(startIndex);
+    showMoreComments(startIndex);
   };
   useEffect(() => {
     if (isSuccess) {
       if (data.message) {
         toast.error(data.message);
       } else {
-        if (data.users.length === 0) {
+        if (data.comments.length === 0) {
           setShowMore(false);
         }
-        setUsersData(() => [...usersData, ...data.users]);
-        console.log(data);
+        console.log(data.comments);
+        setCommentsData(() => [...commentsData, ...data.comments]);
       }
     }
     if (isError) {
@@ -42,4 +43,4 @@ const ShowMoreUsers = ({ usersData, setUsersData, setShowMore }) => {
   );
 };
 
-export default ShowMoreUsers;
+export default ShowMoreComments;

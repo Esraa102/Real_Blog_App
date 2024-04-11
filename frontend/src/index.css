@@ -126,10 +126,18 @@ path.CircularProgressbar-trail {
 .post-content p {
   font-size: 17px;
   margin-bottom: 4px;
+  color: #c1bebe !important;
+  background-color: none !important;
+}
+
+.post-content span {
+  color: #c1bebe !important;
+  background-color: transparent !important;
 }
 .post-content a {
   color: #0078ff !important;
   text-decoration: underline !important;
+  background-color: transparent !important;
 }
 /* HTML: <div class="loader"></div> */
 .loader {

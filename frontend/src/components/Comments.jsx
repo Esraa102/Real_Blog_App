@@ -1,15 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useSelector } from "react-redux";
 import { useGetPostCommentsQuery } from "../features/comments/api/commentApi";
 import toast from "react-hot-toast";
-import { DeleteComment, EditComment, LikeComment, Loader } from ".";
-import { Link } from "react-router-dom";
-import moment from "moment";
+import { Loader, Comment } from ".";
 
 const Comments = ({ postId }) => {
   const { data, isError, isSuccess, isLoading, error } =
     useGetPostCommentsQuery(postId);
-  const { currentUser } = useSelector((state) => state.user);
   if (isError) {
     toast.error(error.data.message);
   }
@@ -26,47 +22,7 @@ const Comments = ({ postId }) => {
           </p>
           <div>
             {data.comments?.map((comment) => (
-              <div
-                key={comment?._id}
-                className="p-3 bg-[#261C28]/80 mb-4 rounded-md flex items-center gap-4 flex-wrap"
-              >
-                <Link to={`/profile/${comment?.author.userId}`}>
-                  <img
-                    src={comment?.author.imgProfile}
-                    alt="img-profile"
-                    className="w-14 h-14 rounded-full object-cover"
-                  />
-                </Link>
-                <div>
-                  <div className="flex gap-1 items-center">
-                    <Link
-                      to={`/profile/${comment?.author.userId}`}
-                      className="text-sm font-bold -mt-[2px] hover:underline text-blue-500"
-                    >
-                      @{comment?.author.username}
-                    </Link>
-                    <span className="text-xs text-gray-500">
-                      {moment(comment?.createdAt).fromNow()}
-                    </span>
-                  </div>
-                  <p className="mt-2">{comment?.content}</p>
-                  {currentUser && (
-                    <div className="mt-3 flex items-center gap-4 flex-wrap">
-                      <LikeComment
-                        commentId={comment?._id}
-                        numberOfLiked={comment?.numberOfLiked}
-                        isUserLiked={comment?.likes.includes(currentUser._id)}
-                      />
-                      {currentUser._id === comment.author.userId && (
-                        <EditComment commentId={comment?._id} />
-                      )}
-                      {currentUser._id === comment.author.userId && (
-                        <DeleteComment commentId={comment?._id} />
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
+              <Comment key={comment._id} comment={comment} />
             ))}
           </div>
         </div>

@@ -5,7 +5,7 @@ import {
   useDeletePostMutation,
 } from "../features/posts/api/postsApiSlice";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { CallToAction, CommentSection, Loader } from "../components";
+import { CallToAction, CommentSection, Loader, Posts } from "../components";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { formatDate } from "../utils/formateDate";
@@ -36,10 +36,12 @@ const PostPage = () => {
     if (isSuccess) {
       if (data.message) {
         toast.error(data.message);
+      } else {
+        console.log(data.post);
       }
     }
     if (isError) {
-      toast.error(error.data.message);
+      toast.error(error.error);
     }
   }, [isError, isSuccess]);
   useEffect(() => {
@@ -110,6 +112,12 @@ const PostPage = () => {
                   Delete Post
                 </button>
               ))}
+          </div>
+          <div className="mt-14">
+            <h3 className="text-center text-main text-3xl font-bold my-8">
+              Recent Articles
+            </h3>
+            <Posts term={"limit"} value={3} showAuthor={true} />
           </div>
         </div>
       )}

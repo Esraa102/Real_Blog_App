@@ -29,6 +29,9 @@ import Comments from "./Comments.jsx";
 import EditComment from "./EditComment.jsx";
 import DeleteComment from "./DeleteComment.jsx";
 import LikeComment from "./LikeComment.jsx";
+import Comment from "./Comment.jsx";
+import DashboardComments from "./DashboardComments.jsx";
+import ShowMoreComments from "./ShowMoreComments.jsx";
 export {
   Header,
   Footer,
@@ -61,4 +64,7 @@ export {
   EditComment,
   LikeComment,
   DeleteComment,
+  Comment,
+  DashboardComments,
+  ShowMoreComments,
 };

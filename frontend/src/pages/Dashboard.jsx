@@ -7,6 +7,7 @@ import {
   DashboardPosts,
   AdminDashboard,
   Users,
+  DashboardComments,
 } from "../components";
 
 const Dashboard = () => {
@@ -31,6 +32,7 @@ const Dashboard = () => {
           {tab === "posts" && <DashboardPosts />}
           {tab === "dashboard" && <AdminDashboard />}
           {tab === "users" && <Users />}
+          {tab === "comments" && <DashboardComments />}
         </div>
       </div>
     </section>

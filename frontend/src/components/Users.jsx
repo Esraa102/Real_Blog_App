@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useGetAllUserMutation } from "../features/user/api/userApiSlice";
+import { useGetAllUsersQuery } from "../features/user/api/userApiSlice";
 import { Link } from "react-router-dom";
 import { DeleteUser, Loader, ShowMoreUsers } from ".";
 import { formatDate } from "../utils/formateDate";
@@ -9,18 +9,15 @@ import { FaCheckCircle } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
 
 const Users = () => {
-  const [getAllUser, { data, isError, isLoading, isSuccess, error }] =
-    useGetAllUserMutation();
-  const [usersData, setUsersData] = useState([]);
+  const { data, isError, isLoading, isSuccess, error } = useGetAllUsersQuery();
   const [showMore, setShowMore] = useState(true);
-  useEffect(() => {
-    getAllUser();
-  }, []);
+  const [usersData, setUsersData] = useState([]);
   useEffect(() => {
     if (isSuccess) {
       if (data.message) {
         toast.error(data.message);
       } else {
+        console.log(data.users);
         setUsersData(data.users);
         if (data.users.length < 9) {
           setShowMore(false);
@@ -97,11 +94,7 @@ const Users = () => {
                     )}
                   </td>
                   <td className="px-6 py-4 text-center">
-                    <DeleteUser
-                      userId={user._id}
-                      usersData={usersData}
-                      setUsersData={setUsersData}
-                    />
+                    <DeleteUser userId={user._id} />
                   </td>
                 </tr>
               ))}
@@ -110,7 +103,11 @@ const Users = () => {
         )}
       </div>
       {showMore && !isLoading && !isError && (
-        <ShowMoreUsers usersData={usersData} setUsersData={setUsersData} />
+        <ShowMoreUsers
+          usersData={usersData}
+          setUsersData={setUsersData}
+          setShowMore={setShowMore}
+        />
       )}
     </div>
   );

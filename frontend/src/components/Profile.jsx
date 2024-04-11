@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import Posts from "./Posts";
 
 const Profile = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -13,6 +14,10 @@ const Profile = () => {
         {currentUser.username}
       </h2>
       <p className="text-center">{currentUser.email}</p>
+      <div>
+        <h3 className="text-2xl text-main mt-8 -mb-3 font-bold"> Your Posts</h3>
+        <Posts term={"userId"} value={currentUser._id} showAuthor={false} />
+      </div>
     </div>
   );
 };

@@ -8,9 +8,9 @@ export const postsApiSlice = createApi({
     getPostById: builder.mutation({
       query: (postId) => ({
         url: `post/${postId}`,
-        method: "GET",
         credentials: "include",
       }),
+      invalidatesTags: ["Posts"],
     }),
     getPosts: builder.mutation({
       query: (queryTerm) => ({

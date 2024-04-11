@@ -4,13 +4,13 @@ import { useGetAllUserPostsMutation } from "../features/posts/api/postsApiSlice"
 import toast from "react-hot-toast";
 import { Loader, PostCard } from ".";
 
-const Posts = ({ userId }) => {
-  const [getAllUserPost, { data, isError, error, isSuccess, isLoading }] =
+const Posts = ({ term, value, showAuthor }) => {
+  const [getAllUserPosts, { data, isError, error, isSuccess, isLoading }] =
     useGetAllUserPostsMutation();
   const [userPosts, setUserPosts] = useState([]);
   useEffect(() => {
-    getAllUserPost({ term: "userId", value: userId });
-  }, [userId]);
+    getAllUserPosts({ term, value });
+  }, []);
   useEffect(() => {
     if (isSuccess) {
       if (data.message) {
@@ -22,7 +22,7 @@ const Posts = ({ userId }) => {
     if (isError) {
       toast.error(error.data.message);
     }
-  }, [isSuccess, isError, userId]);
+  }, [isSuccess, isError]);
   return (
     <div className="my-10">
       {!isLoading && !userPosts.length && (
@@ -38,6 +38,8 @@ const Posts = ({ userId }) => {
             content={post.content}
             image={post.image}
             category={post.category}
+            author={post.author}
+            showAuthor={showAuthor}
           />
         ))}
       </div>

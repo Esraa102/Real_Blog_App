@@ -29,6 +29,46 @@ export const commentApiSlice = createApi({
       }),
       invalidatesTags: ["Comments"],
     }),
+    editComment: builder.mutation({
+      query: (info) => ({
+        url: `update-comment/${info.commentId}`,
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: info,
+      }),
+      invalidatesTags: ["Comments"],
+    }),
+    deleteComment: builder.mutation({
+      query: (info) => ({
+        url: `delete-comment/${info.commentId}`,
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: info,
+      }),
+      invalidatesTags: ["Comments"],
+    }),
+    getAllComments: builder.mutation({
+      query: () => ({
+        url: "all-comments",
+        method: "GET",
+        credentials: "include",
+      }),
+      invalidatesTags: ["Comments"],
+    }),
+    showMoreComments: builder.mutation({
+      query: (startIndex) => ({
+        url: `all-comments?startIndex=${startIndex}`,
+        method: "GET",
+        credentials: "include",
+      }),
+      invalidatesTags: ["Users"],
+    }),
   }),
 });
 
@@ -36,4 +76,8 @@ export const {
   useCreateCommentMutation,
   useGetPostCommentsQuery,
   useLikeCommentMutation,
+  useEditCommentMutation,
+  useDeleteCommentMutation,
+  useGetAllCommentsMutation,
+  useShowMoreCommentsMutation,
 } = commentApiSlice;

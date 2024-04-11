@@ -2,8 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { HiUser } from "react-icons/hi";
 import { FaUserCog, FaUsers } from "react-icons/fa";
-import { LogOut } from ".";
+import { FaCommentDots } from "react-icons/fa6";
 import { BsFileEarmarkPost } from "react-icons/bs";
+import { LogOut } from ".";
 import {
   MdAdminPanelSettings,
   MdCreateNewFolder,
@@ -15,21 +16,6 @@ const Sidebar = ({ tab }) => {
   return (
     <div className="dashboard-sidebar">
       <ul className="flex flex-row gap-3 justify-between md:flex-col md:justify-start">
-        {currentUser.isAdmin && (
-          <li>
-            <Link
-              to={"/dashboard?tab=dashboard"}
-              className={`sidebar-link mb-0 ${
-                tab === "dashboard" && "text-main bg-[#261C28]"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <MdSpaceDashboard size={24} />
-                <span className="hidden md:inline">Dashboard</span>
-              </div>
-            </Link>
-          </li>
-        )}
         <li>
           <Link
             to={"/dashboard?tab=profile"}
@@ -51,6 +37,21 @@ const Sidebar = ({ tab }) => {
             </span>
           </Link>
         </li>
+        {currentUser.isAdmin && (
+          <li>
+            <Link
+              to={"/dashboard?tab=dashboard"}
+              className={`sidebar-link mb-0 ${
+                tab === "dashboard" && "text-main bg-[#261C28]"
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <MdSpaceDashboard size={24} />
+                <span className="hidden md:inline">Dashboard</span>
+              </div>
+            </Link>
+          </li>
+        )}
         <li>
           <Link
             to={"/dashboard?tab=profile-update"}
@@ -65,19 +66,34 @@ const Sidebar = ({ tab }) => {
           </Link>
         </li>
         {currentUser.isAdmin && (
-          <li>
-            <Link
-              to={"/dashboard?tab=users"}
-              className={`sidebar-link mb-0 ${
-                tab === "users" && "text-main bg-[#261C28]"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <FaUsers size={24} />
-                <span className="hidden md:inline">Users</span>
-              </div>
-            </Link>
-          </li>
+          <div className="flex flex-row gap-3 justify-between md:flex-col md:justify-start">
+            <li>
+              <Link
+                to={"/dashboard?tab=users"}
+                className={`sidebar-link mb-0 ${
+                  tab === "users" && "text-main bg-[#261C28]"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <FaUsers size={24} />
+                  <span className="hidden md:inline">Users</span>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={"/dashboard?tab=comments"}
+                className={`sidebar-link mb-0 ${
+                  tab === "comments" && "text-main bg-[#261C28]"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <FaCommentDots size={24} />
+                  <span className="hidden md:inline">Comments</span>
+                </div>
+              </Link>
+            </li>
+          </div>
         )}
         <li>
           <Link

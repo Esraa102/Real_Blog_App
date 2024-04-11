@@ -18,7 +18,7 @@ const CreatePost = () => {
         toast.error(data.message);
       } else {
         toast.success("Post Created Successfully");
-        navigate(`/posts/${data.postData.slug}`);
+        navigate(`/posts/${data.postData._id}`);
       }
     }
     if (error) {

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import Posts from "../components/Posts";
-import { useGetUserByIdMutation } from "../features/user/api/userApiSlice";
+import { useGetUsrByIdQuery } from "../features/user/api/userApiSlice";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Loader } from "../components";
@@ -9,11 +9,7 @@ import { formatDate } from "../utils/formateDate";
 const UserProfile = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
-  const [getUserById, { data, isError, error, isSuccess, isLoading }] =
-    useGetUserByIdMutation();
-  useEffect(() => {
-    getUserById(id);
-  }, [id]);
+  const { data, isError, error, isSuccess, isLoading } = useGetUsrByIdQuery(id);
   useEffect(() => {
     if (isSuccess) {
       if (data.message) {
@@ -57,7 +53,7 @@ const UserProfile = () => {
                 {user?.isAdmin ? "Admin" : "User"}
               </span>
             </div>
-            <Posts userId={id} />
+            <Posts term={"userId"} value={id} showAuthor={false} />
           </>
         )}
       </div>
