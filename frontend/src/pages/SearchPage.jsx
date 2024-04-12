@@ -64,17 +64,16 @@ const SearchPage = () => {
         setShowMore(false);
       }
       setPosts(data.posts);
-      console.log(data);
     }
   }, [isSuccess, isError]);
 
   return (
     <section className="container mx-auto text-white p-4 pt-[110px] lg:px-0">
-      <div className="flex gap-6">
-        <div className="dashboard-sidebar">
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="dashboard-sidebar static top-[80px]">
           <form
             onSubmit={handleSubmit}
-            className="mt-8 flex flex-row justify-between w-full md:flex-col gap-4"
+            className="md:mt-8 flex justify-between w-full flex-col gap-2 md:gap-4"
           >
             <div className="field-container">
               <label htmlFor="search" className="label text-[16px]">
@@ -132,7 +131,7 @@ const SearchPage = () => {
             </button>
           </form>
         </div>
-        <div className="dashboard-main px-6">
+        <div className="dashboard-main px-6 ">
           <h1 className="text-3xl mt-4 font-bold text-main mb-6">
             Found {posts.length} Results
           </h1>

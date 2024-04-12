@@ -22,7 +22,7 @@ const Dashboard = () => {
   }, [location]);
   return (
     <section className="container min-h-screen mx-auto text-white p-4 pt-[110px] lg:px-0">
-      <div className="flex gap-6">
+      <div className="flex flex-col md:flex-row gap-6">
         {/* Sidebar */}
         <Sidebar tab={tab} />
         {/* Main */}

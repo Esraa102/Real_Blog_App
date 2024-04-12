@@ -26,7 +26,7 @@ const Home = () => {
   }, [isSuccess, isError]);
   return (
     <section className="container mx-auto text-white p-4 pt-[110px] lg:px-0">
-      <div className="bg-glass px-4 py-6 rounded-md">
+      <div className="bg-glass p-6 rounded-md">
         <div className="flex gap-4 flex-col md:flex-row items-center justify-between">
           <div>
             <h1 className="text-3xl md:text-4xl my-6 font-semibold">

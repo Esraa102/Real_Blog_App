@@ -14,8 +14,8 @@ import {
 const Sidebar = ({ tab }) => {
   const { currentUser } = useSelector((state) => state.user);
   return (
-    <div className="dashboard-sidebar">
-      <ul className="flex flex-row gap-3 justify-between md:flex-col md:justify-start">
+    <div className="dashboard-sidebar flex-col static top-[80px]">
+      <ul className="flex flex-wrap flex-row gap-3 justify-center  md:flex-col md:justify-start">
         <li>
           <Link
             to={"/dashboard?tab=profile"}
@@ -66,7 +66,7 @@ const Sidebar = ({ tab }) => {
           </Link>
         </li>
         {currentUser.isAdmin && (
-          <div className="flex flex-row gap-3 justify-between md:flex-col md:justify-start">
+          <div className="flex flex-row gap-3 justify-center md:flex-col md:justify-start">
             <li>
               <Link
                 to={"/dashboard?tab=users"}
