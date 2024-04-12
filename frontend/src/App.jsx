@@ -9,6 +9,7 @@ import {
   PostPage,
   Projects,
   Register,
+  SearchPage,
   UserProfile,
 } from "./pages";
 import { Footer, Header } from "./components";
@@ -47,6 +48,7 @@ function App() {
           />
           <Route path="/posts/:id" element={<PostPage />} />
           <Route path="/profile/:id" element={<UserProfile />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="*" element={<PageError />} />
         </Routes>
         <Toaster />

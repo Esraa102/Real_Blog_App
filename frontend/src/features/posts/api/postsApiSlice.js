@@ -19,6 +19,13 @@ export const postsApiSlice = createApi({
       }),
       invalidatesTags: ["Posts"],
     }),
+    searchPost: builder.mutation({
+      query: (searchTerm) => ({
+        url: `getposts?${searchTerm}`,
+        method: "GET",
+      }),
+      invalidatesTags: ["Posts"],
+    }),
     createPost: builder.mutation({
       query: (postData) => ({
         url: "create",
@@ -69,6 +76,13 @@ export const postsApiSlice = createApi({
       }),
       invalidatesTags: ["Posts"],
     }),
+    showMoreResults: builder.mutation({
+      query: (searchQuery) => ({
+        url: `getposts?${searchQuery}`,
+        method: "GET",
+      }),
+      invalidatesTags: ["Posts"],
+    }),
   }),
 });
 
@@ -80,4 +94,6 @@ export const {
   useGetPostByIdMutation,
   useUpdatePostMutation,
   useGetAllUserPostsMutation,
+  useSearchPostMutation,
+  useShowMoreResultsMutation,
 } = postsApiSlice;

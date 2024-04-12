@@ -7,6 +7,7 @@ import CreatePost from "./CreatePost";
 import PostPage from "./PostPage";
 import EditPost from "./EditPost";
 import UserProfile from "./UserProfile";
+import SearchPage from "./SearchPage";
 import PageError from "./PageError";
 
 export {
@@ -19,5 +20,6 @@ export {
   PostPage,
   EditPost,
   UserProfile,
+  SearchPage,
   PageError,
 };

@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { navLinks } from "../constants";
 import { Search, LogOut } from ".";
 import { useSelector } from "react-redux";
@@ -9,6 +10,16 @@ import { IoMdCloseCircle } from "react-icons/io";
 const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
   const [closedNav, setClosedNav] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const location = useLocation();
+  useEffect(() => {
+    const url = new URLSearchParams(location.search);
+    const searchTermFromURL = url.get("searchTerm");
+    console.log(searchTermFromURL);
+    if (searchTermFromURL) {
+      setSearchTerm(searchTermFromURL);
+    }
+  }, [location.search]);
   return (
     <header>
       <div className="fixed w-full top-0 left-0 z-10 bg-glass">
@@ -16,7 +27,7 @@ const Header = () => {
           <Link to={"/"} className="text-2xl font-bold uppercase text-main">
             blog
           </Link>
-          <Search />
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <div className="lg:flex items-center gap-4 hidden">
             <ul className="flex items-center gap-4">
               {navLinks.map((link) => (

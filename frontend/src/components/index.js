@@ -32,6 +32,7 @@ import LikeComment from "./LikeComment.jsx";
 import Comment from "./Comment.jsx";
 import DashboardComments from "./DashboardComments.jsx";
 import ShowMoreComments from "./ShowMoreComments.jsx";
+import ShowMoreResult from "./ShowMoreResult.jsx";
 export {
   Header,
   Footer,
@@ -67,4 +68,5 @@ export {
   Comment,
   DashboardComments,
   ShowMoreComments,
+  ShowMoreResult,
 };
