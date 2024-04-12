@@ -14,14 +14,14 @@ const Home = () => {
   }, []);
   useEffect(() => {
     if (isSuccess) {
-      if (data.message) {
-        toast.error(data.message);
+      if (data?.message) {
+        toast.error(data?.message);
       } else {
-        setPosts(data.posts);
+        setPosts(data?.posts);
       }
     }
     if (isError) {
-      toast.error(error.data.message);
+      toast.error(error.data?.message);
     }
   }, [isSuccess, isError]);
   return (
