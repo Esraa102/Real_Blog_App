@@ -27,12 +27,13 @@ const PostCard = ({
           }}
         ></p>
       </div>
-      <p
+      <Link
+        to={`/search?category=${category}`}
         className="secondary-btn text-sm mx-0 px-2 capitalize
-      absolute top-6 right-6"
+      absolute top-6 right-6 block"
       >
         {category}
-      </p>
+      </Link>
       <div className="flex items-center gap-4 flex-wrap mb-4 justify-between">
         {showAuthor && (
           <div className="flex items-center gap-2">

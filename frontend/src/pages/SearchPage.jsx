@@ -27,11 +27,16 @@ const SearchPage = () => {
     console.log(sidebarData);
     const urlParams = new URLSearchParams(location.search);
     urlParams.set("searchTerm", sidebarData.searchTerm);
-    urlParams.set("sort", sidebarData.sort);
-    urlParams.set("category", sidebarData.category);
+    urlParams.set("sort", sidebarData.sort ? sidebarData.sort : "desc");
+    urlParams.set(
+      "category",
+      sidebarData.category ? sidebarData.category : "uncategorized"
+    );
     const searchQuery = urlParams.toString();
+    console.log(searchQuery);
     navigate(`/search?${searchQuery}`);
   };
+  console.log(showMore);
   useEffect(() => {
     const url = new URLSearchParams(location.search);
     const searchTerm = url.get("searchTerm");
@@ -53,7 +58,7 @@ const SearchPage = () => {
       toast.error(error.data.message);
     }
     if (isSuccess) {
-      if (data.posts > 9) {
+      if (data.posts.length === 9) {
         setShowMore(true);
       } else {
         setShowMore(false);
@@ -136,7 +141,7 @@ const SearchPage = () => {
             <p className="text-gray-400 text-center">No Results Found</p>
           )}
           {isSuccess && !isLoading && (
-            <div className="grid mt-8 gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
+            <div className="grid my-8 gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
               {posts.map((post) => (
                 <PostCard
                   key={post._id}
