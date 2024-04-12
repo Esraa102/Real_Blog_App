@@ -2,7 +2,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const commentApiSlice = createApi({
   reducerPath: "comments",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/comments" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://real-blog-app-1.onrender.com/api/comments",
+  }),
   tagTypes: ["Comments"],
   endpoints: (builder) => ({
     createComment: builder.mutation({

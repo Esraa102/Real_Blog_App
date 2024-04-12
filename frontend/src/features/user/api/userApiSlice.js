@@ -2,7 +2,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const userApi = createApi({
   reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/user" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://real-blog-app-1.onrender.com/api/user",
+  }),
   tagTypes: ["Users"],
   endpoints: (builder) => ({
     updateUserProfile: builder.mutation({
