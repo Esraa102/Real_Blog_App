@@ -17,7 +17,7 @@ const __dirname = path.resolve();
 const port = process.env.PORT || 5001;
 app.use(
   cors({
-    origin: "https://real-blog-app-1.onrender.com",
+    origin: "https://real-blog-app-3.onrender.com",
     credentials: true,
   })
 );

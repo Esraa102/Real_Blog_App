@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const postsApiSlice = createApi({
   reducerPath: "posts",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://real-blog-app-1.onrender.com/api/posts",
+    baseUrl: "https://real-blog-app-3.onrender.com/api/posts",
   }),
   tagTypes: ["Posts"],
   endpoints: (builder) => ({
