@@ -9,9 +9,11 @@ import { errorHandler } from "./middleware/errorHandler.js";
 import { userRouter } from "./routes/user.route.js";
 import { postRouter } from "./routes/post.route.js";
 import { commentRouter } from "./routes/comment.route.js";
+import path from "path";
 const app = express();
 connectToDB();
 
+const __dirname = path.resolve();
 const port = process.env.PORT || 5001;
 app.use(
   cors({
@@ -26,6 +28,12 @@ app.use("/api/user", userRouter);
 app.use("/api/posts", postRouter);
 app.use("/api/comments", commentRouter);
 app.use(errorHandler);
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 app.listen(port, () => {
   console.log("Server Running On", port);
 });
